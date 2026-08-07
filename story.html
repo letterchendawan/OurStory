@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Five Meetings, Thirty Thousand Messages — The Story of Zulaikha &amp; Iqbal</title>
+<meta name="description" content="A long-form story drawn from a real conversation, March 2025 – August 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+:root{
+  --paper:#faf7f2;
+  --paper-deep:#f3eee6;
+  --ink:#211d18;
+  --ink-soft:#5c554b;
+  --ink-faint:#96908520;
+  --accent:#a04b3c;          /* burnt rose */
+  --accent-soft:#a04b3c14;
+  --hairline:#211d1818;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,"Segoe UI",sans-serif;
+  --measure:66ch;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:1.0625rem;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--accent);color:var(--paper)}
+
+/* ============================================================
+   2. READING PROGRESS + CHAPTER NAV
+   ============================================================ */
+#progress{
+  position:fixed;top:0;left:0;height:3px;width:0;
+  background:var(--accent);z-index:100;
+}
+nav.chapters{
+  position:fixed;right:1.25rem;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:.65rem;z-index:90;
+}
+nav.chapters a{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--ink);opacity:.18;
+  transition:opacity .3s,transform .3s;
+  display:block;
+}
+nav.chapters a:hover,nav.chapters a:focus-visible{opacity:.6;transform:scale(1.4)}
+nav.chapters a.active{opacity:1;background:var(--accent);transform:scale(1.4)}
+nav.chapters a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (max-width:900px){nav.chapters{display:none}}
+
+/* ============================================================
+   3. TYPOGRAPHY
+   ============================================================ */
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;text-wrap:balance}
+p{max-width:var(--measure)}
+em{font-style:italic}
+a{color:var(--accent)}
+
+.kicker{
+  font-family:var(--sans);font-size:.72rem;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--accent);
+}
+.chapter-sub{
+  font-family:var(--serif);font-style:italic;font-size:1.2rem;
+  color:var(--ink-soft);max-width:var(--measure);
+}
+.period{
+  font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-soft);font-weight:500;
+}
+
+/* ============================================================
+   4. LAYOUT
+   ============================================================ */
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+section.chapter{padding:7rem 0 3rem}
+section.chapter header{margin-bottom:3rem}
+section.chapter header h2{font-size:clamp(2rem,5.5vw,3.1rem);margin:.9rem 0 .8rem}
+.prose p{margin-bottom:1.5rem}
+.prose p.lede{font-family:var(--serif);font-size:1.35rem;line-height:1.6;color:var(--ink)}
+
+hr.divider{
+  border:none;height:1px;background:var(--hairline);
+  max-width:200px;margin:4.5rem auto;position:relative;overflow:visible;
+}
+hr.divider::after{
+  content:"❋";position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  background:var(--paper);padding:0 1rem;
+  color:var(--accent);font-size:.8rem;
+}
+
+/* ============================================================
+   5. HERO
+   ============================================================ */
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:5rem 1.5rem 4rem;position:relative;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #a04b3c0d, transparent 65%),
+    var(--paper);
+}
+.hero .kicker{margin-bottom:2rem}
+.hero h1{font-size:clamp(2.6rem,8vw,5.2rem);font-weight:300;max-width:15ch}
+.hero h1 .amp{font-style:italic;color:var(--accent)}
+.hero .subtitle{
+  font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.6vw,1.45rem);
+  color:var(--ink-soft);margin-top:2rem;max-width:44ch;line-height:1.6;
+}
+.hero .meta{
+  margin-top:3.5rem;display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center;
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+}
+.hero .meta span{display:flex;flex-direction:column;gap:.3rem}
+.hero .meta strong{font-family:var(--serif);font-size:1.5rem;letter-spacing:0;text-transform:none;color:var(--ink);font-weight:500}
+.scroll-hint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ink-soft);
+  text-decoration:none;
+}
+
+/* ============================================================
+   6. QUOTES & CHAT FRAGMENTS
+   ============================================================ */
+blockquote.pull{
+  margin:3.5rem 0;padding:0 0 0 2rem;border-left:2px solid var(--accent);
+  font-family:var(--serif);font-size:clamp(1.3rem,3vw,1.7rem);
+  line-height:1.5;font-weight:300;font-style:italic;color:var(--ink);
+  max-width:34ch;
+}
+blockquote.pull cite{
+  display:block;margin-top:1.2rem;font-family:var(--sans);font-style:normal;
+  font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+}
+.chat{
+  margin:3rem auto;max-width:480px;display:flex;flex-direction:column;gap:.85rem;
+  padding:2rem 1.5rem;background:var(--paper-deep);border:1px solid var(--hairline);
+  border-radius:4px;
+}
+.chat .stamp{
+  text-align:center;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:.5rem;
+}
+.msg{max-width:88%;display:flex;flex-direction:column;gap:.2rem}
+.msg .who{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.msg .bubble{
+  padding:.7rem 1rem;border-radius:14px;font-size:.95rem;line-height:1.55;
+  background:#fff;border:1px solid var(--hairline);white-space:pre-line;
+}
+.msg.a{align-self:flex-start}
+.msg.a .bubble{border-bottom-left-radius:4px}
+.msg.b{align-self:flex-end;text-align:right}
+.msg.b .who{align-self:flex-end}
+.msg.b .bubble{background:var(--accent-soft);border-color:#a04b3c30;border-bottom-right-radius:4px;text-align:left}
+.chat-note{
+  font-size:.9rem;color:var(--ink-soft);font-style:italic;
+  max-width:var(--measure);margin:-1.5rem auto 3rem;max-width:480px;
+}
+
+/* Expandable interpretation */
+details.why{
+  margin:2rem 0 2.5rem;border:1px solid var(--hairline);border-radius:4px;
+  background:var(--paper-deep);max-width:var(--measure);
+}
+details.why summary{
+  cursor:pointer;padding:1rem 1.25rem;font-size:.8rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+  list-style:none;display:flex;align-items:center;gap:.6rem;
+}
+details.why summary::before{content:"+";font-size:1.1rem;font-weight:400;transition:transform .25s}
+details.why[open] summary::before{transform:rotate(45deg)}
+details.why summary::-webkit-details-marker{display:none}
+details.why summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+details.why .body{padding:0 1.25rem 1.25rem;font-size:.95rem;color:var(--ink-soft)}
+
+/* ============================================================
+   7. STATS
+   ============================================================ */
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;background:var(--hairline);border:1px solid var(--hairline);
+  margin:3.5rem 0;
+}
+.stats div{background:var(--paper);padding:1.75rem 1.25rem;text-align:center}
+.stats strong{
+  display:block;font-family:var(--serif);font-size:clamp(1.7rem,3.5vw,2.3rem);
+  font-weight:400;color:var(--ink);
+}
+.stats span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ============================================================
+   8. TIMELINE CHART (interpretive)
+   ============================================================ */
+.chart{margin:3.5rem 0}
+.chart-title{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:1.5rem}
+.chart .bars{
+  display:flex;align-items:flex-end;gap:3px;height:180px;
+  border-bottom:1px solid var(--hairline);padding-bottom:0;
+}
+.chart .bar{
+  flex:1;background:var(--ink);opacity:.22;border-radius:2px 2px 0 0;
+  min-height:2px;position:relative;
+  transform-origin:bottom;
+}
+.chart .bar.hot{background:var(--accent);opacity:.9}
+.chart .bar:hover::after,.chart .bar:focus-visible::after{
+  content:attr(data-label);position:absolute;bottom:calc(100% + 8px);left:50%;
+  transform:translateX(-50%);white-space:nowrap;background:var(--ink);color:var(--paper);
+  font-size:.7rem;padding:.3rem .6rem;border-radius:3px;z-index:5;
+}
+.chart .labels{display:flex;gap:3px;margin-top:.6rem}
+.chart .labels span{flex:1;text-align:center;font-size:.6rem;letter-spacing:.05em;color:var(--ink-soft);text-transform:uppercase}
+.chart-caption{font-size:.8rem;color:var(--ink-soft);font-style:italic;margin-top:1.25rem;max-width:var(--measure)}
+
+/* ============================================================
+   9. REVEAL ANIMATION
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* ============================================================
+   10. FOOTER
+   ============================================================ */
+footer{
+  padding:5rem 1.5rem 4rem;text-align:center;border-top:1px solid var(--hairline);
+  margin-top:5rem;
+}
+footer p{margin:0 auto .75rem;font-size:.85rem;color:var(--ink-soft)}
+#toTop{
+  display:inline-block;margin-top:1.5rem;font-size:.72rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);text-decoration:none;
+  border:1px solid #a04b3c40;padding:.7rem 1.6rem;border-radius:99px;
+  transition:background .3s,color .3s;
+}
+#toTop:hover,#toTop:focus-visible{background:var(--accent);color:var(--paper)}
+#toTop:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+@media (max-width:600px){
+  body{font-size:1rem}
+  section.chapter{padding:5rem 0 2rem}
+  blockquote.pull{padding-left:1.25rem}
+  .hero .meta{gap:1.5rem}
+  .chat{padding:1.5rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<div id="progress" aria-hidden="true"></div>
+
+<nav class="chapters" aria-label="Chapter navigation">
+  <a href="#hero" aria-label="Top"></a>
+  <a href="#ch1" aria-label="Chapter 1"></a>
+  <a href="#ch2" aria-label="Chapter 2"></a>
+  <a href="#ch3" aria-label="Chapter 3"></a>
+  <a href="#ch4" aria-label="Chapter 4"></a>
+  <a href="#ch5" aria-label="Chapter 5"></a>
+  <a href="#ch6" aria-label="Chapter 6"></a>
+  <a href="#ch7" aria-label="Chapter 7"></a>
+  <a href="#pattern" aria-label="The Pattern"></a>
+  <a href="#end" aria-label="Where the Story Stands"></a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="hero">
+  <p class="kicker">The Story Of</p>
+  <h1>Zulaikha <span class="amp">&amp;</span> Iqbal</h1>
+  <p class="subtitle">Five meetings. Thirty thousand messages. A conversation that was told to end where it stood — and quietly refused.</p>
+  <div class="meta">
+    <span><strong>524</strong> days</span>
+    <span><strong>30,547</strong> messages</span>
+    <span><strong>2 Mar 2025 — 7 Aug 2026</strong> WhatsApp</span>
+  </div>
+  <a class="scroll-hint" href="#opening">Begin ↓</a>
+</header>
+
+<main>
+
+<!-- ================= OPENING ================= -->
+<section class="chapter" id="opening">
+  <div class="wrap prose">
+    <p class="lede reveal">Some conversations announce themselves. This one arrived six seconds after midnight, during Ramadan, wearing a single word:</p>
+    <blockquote class="pull reveal">Salam
+      <cite>Zulaikha — 2 March 2025, 12:00 AM</cite>
+    </blockquote>
+    <p class="reveal">She needed help with treasurer duties for a campus programme. He answered within nine seconds, then sent six voice notes explaining budgets, receipts, and financial reports — at midnight, unprompted, in far more detail than the question required.</p>
+    <p class="reveal">Nobody involved would have called it the beginning of anything. But if you lay all 30,547 messages side by side — the way this story does — you can see it plainly: a line that rises, breaks, falls almost to silence for an entire year, and then returns louder than it ever was.</p>
+    <p class="reveal">This is not a love story, at least not officially. Both of them are very insistent about that. It is, by their own stubborn definition, a story about two <em>kawan</em> — two friends — and it should be read exactly the way it was written: with the label they chose, and everything underneath it.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= CHAPTER 1 ================= -->
+<section class="chapter" id="ch1">
+  <div class="wrap">
+    <header class="reveal">
+      <p class="kicker">Chapter One</p>
+      <h2>Welcome to PizzaHut</h2>
+      <p class="chapter-sub">In which a budget question becomes a scoreboard, and a scoreboard becomes an excuse to keep talking.</p>
+      <p class="period" style="margin-top:1rem">March 2025 · Ramadan · 4,508 messages</p>
+    </header>
+    <div class="prose">
+      <p class="reveal">Within the first two minutes of the conversation, she was already teasing him. His six earnest voice notes were met with:</p>
+    </div>
+    <div class="chat reveal" role="figure" aria-label="Chat fragment from 2 March 2025">
+      <p class="stamp">2 March 2025 · 12:00 AM</p>
+      <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">Selamat datang ke PizzaHut ! 🍕 Sila buat pesanan .</span></div>
+      <div class="msg b"><span class="who">Iqbal</span><span class="bubble">PizzaHut pulakk</span></div>
+      <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">HAHAHAHA bukan ek</span></div>
+    </div>
+    <div class="prose">
+      <p class="reveal">Seventeen minutes later he sent her a two-character message: <em>4-1</em>. A score. He had, apparently, unilaterally started keeping points in some game whose rules only he knew. She played along without asking for an explanation — <em>5-1</em>, she countered — and when he asked how many points it took to win, she answered: <em>secret</em>.</p>
+      <p class="reveal">That was the whole tone of March. It was Ramadan, and at 4:50 in the morning he wrote <em>Selamat Bersahur Aiqha</em>; ten minutes later she wrote it back. They met — briefly, shyly — at an iftar at their campus hall on 7 March, an encounter he prepared for by announcing, in advance, that he was bringing a friend along <em>sebab saya malu</em>. Because he was embarrassed.</p>
+    </div>
+    <blockquote class="pull reveal">kalau meja saya kosong insyaAllah kita lepak se table
+      <cite>Zulaikha — 2 March 2025</cite>
+    </blockquote>
+    <div class="prose">
+      <p class="reveal">In that single month they exchanged 4,508 messages — more than they would manage in the following twelve months combined. They talked through the night about clubs, emcee work, cats, and each other's supposed extroversion (he denied it: <em>kita ni dia ikut mood jugak</em>). She called him Iqbal. He called her Aiqha. Neither name would survive what came next.</p>
+    </div>
+    <details class="why reveal">
+      <summary>Why this month matters</summary>
+      <div class="body">Almost every recurring pattern in this story is already present in the first 48 hours: her deadpan jokes, his over-thorough helpfulness, the invented games, the late hours, the mutual shyness about meeting in person. The conversation gives the impression that the ease between them was immediate — which makes what happened in April harder, not easier.</div>
+    </details>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= CHAPTER 2 ================= -->
+<section class="chapter" id="ch2">
+  <div class="wrap">
+    <header class="reveal">
+      <p class="kicker">Chapter Two</p>
+      <h2>The Letter</h2>
+      <p class="chapter-sub">In which he says the thing, carefully; and she says no, kindly; and both of them behave better than most people ever do.</p>
+      <p class="period" style="margin-top:1rem">25–26 April 2025 · Eight messages</p>
+    </header>
+    <div class="prose">
+      <p class="reveal">On the afternoon of 25 April 2025, after nearly two months of talking, Iqbal sent the longest message of the entire conversation to that point. It was not a request to be together. He was explicit about that — he did not want a relationship conducted the wrong way. It was a declaration of intent, written in the register of someone who had rehearsed it many times:</p>
+    </div>
+    <blockquote class="pull reveal">Iqbal berniat untuk masuk dalam hidup Aiqha dengan cara yang halal dan terhormat.
+      <cite>Iqbal — 25 April 2025, 2:03 PM</cite>
+    </blockquote>
+    <div class="prose">
+      <p class="reveal">He asked for nothing in return except that she know. He wrote that the feeling had made him want to become a better version of himself, and that whatever her answer, <em>Iqbal tetap hormat dan terima</em>.</p>
+      <p class="reveal">Her reply came eight and a half hours later, at 10:38 that night. It is worth reading slowly, because it is one of the gentlest rejections a person can write:</p>
+    </div>
+    <blockquote class="pull reveal">Iqbal ada hati yang baik dan matlamat hidup yang jelas, tapi Aiqha tak dapat nak balas perasaan Iqbal dengan rasa yang sama.
+      <cite>Zulaikha — 25 April 2025, 10:38 PM</cite>
+    </blockquote>
+    <div class="prose">
+      <p class="reveal">She was still studying, she said. Love was not something she was chasing right now. She was sure he would find someone extraordinary. And she apologised, in advance, in case anything she had written stung.</p>
+      <p class="reveal">He answered within six minutes, thanked her for the way she had refused him, and told her he had already made istikharah — the prayer for guidance — many times before sending the message, and had accepted every possible outcome before he pressed send. Then, just after midnight, she closed the chapter with a sentence that would sit quietly over everything that followed:</p>
+    </div>
+    <div class="chat reveal" role="figure" aria-label="Chat fragment from 26 April 2025">
+      <p class="stamp">26 April 2025 · 12:30 AM</p>
+      <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">Cerita sini biarlah habis sini. Biasalah manusia, lumrah untuk ada perasaan terhadap orang lain. Teruskan jadi Iqbal yang Happy 👍🏻</span></div>
+      <div class="msg b"><span class="who">Iqbal</span><span class="bubble">Baikk Terima Kasih Aiqha</span></div>
+      <div class="msg b"><span class="who">Iqbal</span><span class="bubble">Hati” esok berjalan</span></div>
+      <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">Baik</span></div>
+    </div>
+    <p class="chat-note reveal">"Let the story end here." It was meant kindly, and taken gracefully. It also turned out to be the single least accurate prediction in thirty thousand messages.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= CHAPTER 3 ================= -->
+<section class="chapter" id="ch3">
+  <div class="wrap">
+    <header class="reveal">
+      <p class="kicker">Chapter Three</p>
+      <h2>Saudara &amp; Saudari</h2>
+      <p class="chapter-sub">In which a year passes at arm's length, held together by exam wishes and a formality that both of them kept perfectly.</p>
+      <p class="period" style="margin-top:1rem">May 2025 — March 2026 · ~1,150 messages in eleven months</p>
+    </header>
+    <div class="prose">
+      <p class="reveal">What happens after a refusal like that? In most stories, silence. Here, something stranger and more deliberate: they invented a new language for each other.</p>
+      <p class="reveal">Gone were <em>Iqbal</em> and <em>Aiqha</em>. In their place, with almost ceremonial consistency, came <em>saudara</em> and <em>saudari</em> — brother and sister in faith, the most carefully respectful form of address available to them. He used it in nearly every opening line for eleven months. She always answered in kind.</p>
+    </div>
+    <div class="chat reveal" role="figure" aria-label="Chat fragment from June 2025">
+      <p class="stamp">18 June 2025 — after 18 days of silence</p>
+      <div class="msg b"><span class="who">Iqbal</span><span class="bubble">Assalamualaikum saudari Zulaikha
+Saya ada soalan yang hendak dipertanyakan</span></div>
+      <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">Waalaikumsalam saudara Iqbal.
+Saya tidak terlibat dengan program tersebut</span></div>
+      <div class="msg b"><span class="who">Iqbal</span><span class="bubble">Wahh formal betul jawapan saudari</span></div>
+    </div>
+    <div class="prose">
+      <p class="reveal">The numbers tell you how thin the thread became: 124 messages in May. Twenty-three in June. Forty in September. Thirty-one in the whole of January. There were gaps of eighteen days, twenty-three days, thirty-six days.</p>
+      <p class="reveal">But the thread never actually broke, and it is worth noticing <em>what</em> it was made of. He remembered her exam schedule and wished her luck before papers — then checked in afterwards to ask how they went. He sent her his portfolio to test. He sent her his first TikTok videos and asked for her honest review (<em>Inspired dari saudari lah ni</em>, he admitted). Of the 168 days on which anyone spoke at all across the whole conversation, he was the one who spoke first on 130 of them.</p>
+      <p class="reveal">And once, at 2:31 in the morning on New Year's Day 2026, watching the same fireworks from opposite ends of a distance neither of them had chosen words for, he wrote: <em>Saya rasa saya nampak saudari tadi.</em> I think I saw you just now. Her reply, hours later, was three words and a sigh:</p>
+    </div>
+    <blockquote class="pull reveal">lain rasanya.. 😔
+      <cite>Zulaikha — 1 January 2026, 6:18 AM</cite>
+    </blockquote>
+    <details class="why reveal">
+      <summary>Between the lines</summary>
+      <div class="body">It is impossible to know from the messages alone what either of them felt during this year, and this story will not pretend otherwise. What the record does show is behaviour: he never once referred back to April, never pressed, never sulked — and never stopped showing up in small, deniable ways. She never once told him to stop. One possible reading is that "saudara/saudari" was less a wall than a truce: a way to keep the door open while honouring, to the letter, what she had asked for.</div>
+    </details>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= CHAPTER 4 ================= -->
+<section class="chapter" id="ch4">
+  <div class="wrap">
+    <header class="reveal">
+      <p class="kicker">Chapter Four</p>
+      <h2>The Way Back</h2>
+      <p class="chapter-sub">In which nothing dramatic happens — which is exactly how everything starts again.</p>
+      <p class="period" style="margin-top:1rem">April — May 2026 · 3,428 messages</p>
+    </header>
+    <div class="prose">
+      <p class="reveal">There is no single message where the conversation comes back to life. It returns the way weather changes: a TikTok link here, a survey he volunteered to answer there ("saya ni penjawab survey professional tau 🤓"), a promotion for his new photography service that turned, without anyone deciding it should, into a two-hour conversation about haunted dormitories in Segamat.</p>
+      <p class="reveal">By late April 2026 they were talking past midnight again. The old rhythm reassembled itself piece by piece — her deadpan, his HAHAHAHAHA, the mock-formal <em>saudari</em> now carrying a completely different temperature. One night he observed, mid-conversation:</p>
+    </div>
+    <blockquote class="pull reveal">Saya rasa kan saudari kita kalau borak ni depan-depan kan dah boleh jadi podcast rasanya
+      <cite>Iqbal — 26 April 2026, 11:17 PM</cite>
+    </blockquote>
+    <div class="prose">
+      <p class="reveal">She agreed the podcast would run two hours minimum. The message counts agree with her: 1,106 in April, then 2,322 in May. Exactly one year after the letter, neither of them mentioned the anniversary. Both of them were online that night.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= CHAPTER 5 ================= -->
+<section class="chapter" id="ch5">
+  <div class="wrap">
+    <header class="reveal">
+      <p class="kicker">Chapter Five</p>
+      <h2>The Night of Nine Years</h2>
+      <p class="chapter-sub">In which two people trade the stories they don't tell anyone, and the conversation stops being casual for good.</p>
+      <p class="period" style="margin-top:1rem">7–8 May 2026 · one night, 561 messages</p>
+    </header>
+    <div class="prose">
+      <p class="reveal">On the night of 7 May 2026, a conversation about a missed train turned into something else. He apologised for oversharing; she told him to go on. Then, some time after midnight, the subject turned to trust — and she said something she had apparently never told him in fourteen months of talking:</p>
+    </div>
+    <blockquote class="pull reveal">saya pernah trauma satu kali dalam hidup saya, which is dicurangi. … sejak itu, saya tak pernah percaya yang lelaki tulus wujud.
+      <cite>Zulaikha — 8 May 2026, 12:30 AM</cite>
+    </blockquote>
+    <div class="prose">
+      <p class="reveal">What followed was the longest and most careful exchange in the entire archive. He went first — told her about a one-month relationship from his diploma years that he had ended out of shame and repentance, the friend who pulled him back, the promise they made to keep each other accountable. Then, year by year, she told him her story: a boy their families both knew, nine years of orbits and returns, and a final betrayal — six months spent believing she had finally been chosen, only to learn he had never actually been free.</p>
+    </div>
+    <blockquote class="pull reveal">sakitnya masih berbekas. amarah, kecewa, luka. semua saya balut rapi dan tersimpan hingga ke hari ini
+      <cite>Zulaikha — 8 May 2026, 12:31 AM</cite>
+    </blockquote>
+    <div class="prose">
+      <p class="reveal">He did not offer solutions. He got angry on her behalf (<em>Geram saya dengar cerita saudari ni</em>), asked the questions she wanted asked, and stayed until the story was finished — which took, by her own estimate, most of the night.</p>
+      <p class="reveal">Nothing was declared afterwards. But the record shows a clean line: before this night, they were two people who joked well together. After it, there was no subject they didn't touch.</p>
+    </div>
+    <details class="why reveal">
+      <summary>Why this night matters</summary>
+      <div class="body">Her sentence — "saya tak pernah percaya yang lelaki tulus wujud", <em>I stopped believing sincere men exist</em> — retroactively explains April 2025 in a way she never did at the time, and may not have intended to now. It also reframes everything he had done since: the eleven months of exam wishes and scrupulous formality read, in hindsight, like a long answer to a doubt he didn't yet know she had. That reading is interpretation, not fact. But it is hard to unsee.</div>
+    </details>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= CHAPTER 6 ================= -->
+<section class="chapter" id="ch6">
+  <div class="wrap">
+    <header class="reveal">
+      <p class="kicker">Chapter Six</p>
+      <h2>"Kawan Tak Boleh Rindu Kawan Ke?"</h2>
+      <p class="chapter-sub">In which a word neither of them will define gets said several hundred times, strictly between friends.</p>
+      <p class="period" style="margin-top:1rem">July 2026 · 8,809 messages · first video call: 3 hours</p>
+    </header>
+    <div class="prose">
+      <p class="reveal">July 2026 is where the chart stops looking like a friendship and starts looking like a fever. Eight thousand eight hundred messages — nearly double the previous record, set during that first Ramadan seventeen months earlier.</p>
+      <p class="reveal">The month has its own milestones, small and unmistakable. On 14 July, her first heart emoji — deployed, characteristically, as a joke about him drinking the green tea she wanted (<em>heart is hurt</em> 💔❤️‍🩹). On 19 July, at one in the morning: <em>do you want to hear a joke… i cried. thats the joke.</em> He stayed up asking careful questions until she felt better. That same week he sent her, unprompted, a message that began with his full name and the exact hour of his birth — the kind of biography you write for someone's family, not for a friend.</p>
+      <p class="reveal">And on 24 July, at 12:35 in the morning, after seventeen months of text: the first video call. It lasted three hours.</p>
+      <p class="reveal">Then the word arrived. <em>Rindu.</em> Missing someone. Once it entered the conversation neither of them could put it down — and neither of them would own it, either. What followed was a negotiation conducted entirely in capital letters:</p>
+    </div>
+    <div class="chat reveal" role="figure" aria-label="Chat fragment from 1 August 2026">
+      <p class="stamp">1 August 2026</p>
+      <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">rindu ke</span></div>
+      <div class="msg b"><span class="who">Iqbal</span><span class="bubble">APAAA KAWAN TAK BOLEH RINDU KAWAN KE</span></div>
+      <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">cakap je la rindu</span></div>
+      <div class="msg b"><span class="who">Iqbal</span><span class="bubble">RINDU LAH</span></div>
+      <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">rindu betul ya, kawan sorang ni.. 😏</span></div>
+    </div>
+    <p class="chat-note reveal">"What — can't a friend miss a friend?" The word <em>kawan</em> is doing an extraordinary amount of work in this exchange, and both parties appear to know it.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= CHAPTER 7 ================= -->
+<section class="chapter" id="ch7">
+  <div class="wrap">
+    <header class="reveal">
+      <p class="kicker">Chapter Seven</p>
+      <h2>Juju</h2>
+      <p class="chapter-sub">In which seven days produce ten thousand messages, a five-hour phone call, and a name that belongs to no one else.</p>
+      <p class="period" style="margin-top:1rem">1–7 August 2026 · 10,740 messages · longest call: 5 hours</p>
+    </header>
+    <div class="prose">
+      <p class="reveal">The first week of August 2026 contains more messages than the first fourteen months of the conversation combined. The six busiest days in the entire archive are the six most recent. On 1 August alone: 2,380 messages.</p>
+      <p class="reveal">Text stopped being enough. The call log for this single week reads like a confession the chat kept refusing to make in words: a four-hour voice call starting at 1:47 AM. A two-hour video call. Another four-hour call. And on the night of 6 August, beginning four minutes before midnight — a voice call lasting five hours, ending somewhere near dawn.</p>
+      <p class="reveal">On the afternoon of 4 August, in the middle of ordinary logistics, it finally slipped out in plain text — and was returned within sixty seconds:</p>
+    </div>
+    <div class="chat reveal" role="figure" aria-label="Chat fragment from 4 August 2026">
+      <p class="stamp">4 August 2026 · 5:00 PM</p>
+      <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">thankyou doooo saifullllll ya allahhhh sayang do kamu</span></div>
+      <div class="msg b"><span class="who">Iqbal</span><span class="bubble">Ye doo sayang kamu jugakk do 🌸</span></div>
+    </div>
+    <div class="prose">
+      <p class="reveal">Was it retracted? Softened? Quite the opposite — it became a ritual. Two nights later: <em>Saya sangat sayang kamu tau FREN 🌸🌸</em>, answered with <em>sayang kamu juga kawan kesayangan 😊✨</em>. The label <em>kawan</em> — friend — is never dropped. It is simply made to carry more and more until the word itself becomes the joke: <em>kawan kesayangan</em>, the beloved friend. He tested the same line from his side, deadpan: <em>Who need girlfriend / When you got your bestie.</em></p>
+      <p class="reveal">Somewhere in this week she stopped being <em>saudari</em> for good and became <em>juju</em> — his own compression of Zulaikha, a name that exists nowhere else. On the morning of 7 August, the most recent day in the archive, the first message of the day was his, sent at 6:00 AM sharp: <em>Morningg jujuuuu 🫵🌸</em>. Later that afternoon, mid-conversation, she called him <em>dear</em> — for the first time in 524 days — inside a sentence so ordinary it almost slipped past: <em>not sure yet dear.</em></p>
+      <p class="reveal">And on 6 August, at 6:59 in the morning, it was Zulaikha herself — the author of <em>cerita sini biarlah habis sini</em> — who finally said the thing out loud:</p>
+    </div>
+    <blockquote class="pull reveal">isnt it weird that we pernah jumpa 5 times je and we keep on saying rindu
+      <cite>Zulaikha — 6 August 2026, 6:59 AM</cite>
+    </blockquote>
+    <div class="prose">
+      <p class="reveal">Five meetings. In seventeen months. His answer did not resolve the weirdness; it enrolled in it: <em>Not even meet but rinduu.</em></p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= THE PATTERN ================= -->
+<section class="chapter" id="pattern">
+  <div class="wrap">
+    <header class="reveal">
+      <p class="kicker">The Pattern</p>
+      <h2>What the Numbers Refuse to Hide</h2>
+    </header>
+    <div class="chart reveal" role="figure" aria-label="Bar chart of messages per month, March 2025 to August 2026">
+      <p class="chart-title">Messages per month · Mar 2025 — Aug 2026</p>
+      <div class="bars" id="bars"></div>
+      <div class="labels">
+        <span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span>
+        <span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span>
+      </div>
+      <p class="chart-caption">An interpretive visualization of actual monthly message counts. The August 2026 bar covers only seven days. The long valley in the middle is the year of <em>saudara</em> and <em>saudari</em>.</p>
+    </div>
+    <div class="stats reveal">
+      <div><strong>30,547</strong><span>messages</span></div>
+      <div><strong>5</strong><span>meetings in person</span></div>
+      <div><strong>5 hrs</strong><span>longest single call</span></div>
+      <div><strong>1,736</strong><span>stickers exchanged</span></div>
+      <div><strong>130 / 38</strong><span>days he spoke first / she did</span></div>
+      <div><strong>1,300+</strong><span>messages containing laughter</span></div>
+    </div>
+    <div class="prose">
+      <p class="reveal">A few facts, for the record. He has sent more messages (16,490 to her 14,057) and asks nearly twice as many questions. Her single most-used emoji, by an enormous margin, is 😭 — deployed 317 times, almost always while laughing. The word <em>rindu</em>, absent for more than a year, appears over seventy times in the first week of August alone.</p>
+      <p class="reveal">And one small thing the numbers catch that memory might not: the conversation's very first message and its current era both begin the same way. In March 2025 she opened with <em>Salam</em> at midnight. In August 2026 he opens every morning with hers.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= THE THINGS THEY DIDN'T SAY ================= -->
+<section class="chapter" id="unsaid">
+  <div class="wrap">
+    <header class="reveal">
+      <p class="kicker">Between the Lines</p>
+      <h2>The Things They Haven't Said</h2>
+    </header>
+    <div class="prose">
+      <p class="reveal">In seventeen months and thirty thousand messages, the letter of 25 April 2025 has never once been mentioned again. Not by him — who promised he wouldn't — and not by her, who asked for exactly that. It sits in the archive like a sealed room in a house both of them still live in.</p>
+      <p class="reveal">No one has asked the question that her own message of 6 August walks directly up to. <em>Isn't it weird?</em> — is as close as either has come, and it was left, deliberately or not, as a rhetorical one. The words <em>sayang</em> and <em>rindu</em> flow freely now, but always wearing the uniform of <em>kawan</em>, <em>fren</em>, <em>bestie</em> — a costume that fools neither the reader nor, one suspects, the people wearing it.</p>
+      <p class="reveal">There is no way to know for certain what either of them intends. What can be said, strictly from the evidence: she once told him she no longer believed sincere men exist, and has since spent five hundred nights collecting counter-evidence from the same source. And he once wrote that when he was ready, he intended to enter her life <em>dengan cara yang halal dan terhormat</em> — and has conducted himself, for 524 days and counting, like a man who meant it.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= CONCLUSION ================= -->
+<section class="chapter" id="end">
+  <div class="wrap">
+    <header class="reveal">
+      <p class="kicker">Where the Story Stands</p>
+      <h2>7 August 2026, 7:01 PM</h2>
+    </header>
+    <div class="prose">
+      <p class="reveal">The archive ends mid-sentence, because the conversation hasn't ended. The last day in the record contains 1,028 messages, one <em>Morningg jujuuuu</em>, one <em>dear</em>, and a man admitting he lost focus at a project exhibition because — his words — <em>tiba-tiba saya rasa perasaan rindu yang terlalu luar biasa terhadap juju</em>. She told him, on the record, to please miss her at a more convenient time. 😭</p>
+      <p class="reveal">What changed over these 524 days is easy to state and impossible to reduce: <em>Aiqha</em> became <em>saudari</em> became <em>juju</em>. A scoreboard became a letter, a letter became a year of careful distance, and the distance became five-hour phone calls at midnight. What remained is just as clear: the same two people, still teasing, still refusing labels, still ending their days in each other's company from towns an hour apart.</p>
+      <p class="reveal">What remains uncertain is the only thing that was ever uncertain. She asked for the story to end where it stood, and he honoured it so completely that the story had no choice but to start over as something else. Whether that something ever gets its true name — the one he wrote down once, in April, and never said again — is not in this archive.</p>
+      <p class="reveal">But the archive does contain her own best summary of the situation, filed at 6:59 on an ordinary Thursday morning, disguised as a joke the way all her serious things are:</p>
+    </div>
+    <blockquote class="pull reveal">wdym rindu but never jumpa properly pun
+      <cite>Zulaikha — 6 August 2026</cite>
+    </blockquote>
+    <div class="prose">
+      <p class="reveal">Five meetings. Thirty thousand messages. Some stories end where they're told to. This one just changed its name and kept going.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Assembled from a real conversation of 30,547 messages · 2 March 2025 — 7 August 2026.</p>
+  <p>All quotes appear in their original wording. Interpretations are marked as such; the rest belongs to the two people who wrote it.</p>
+  <a href="#hero" id="toTop">Return to the beginning</a>
+</footer>
+
+<script>
+/* ============================================================
+   Reading progress bar
+   ============================================================ */
+(function(){
+  var bar=document.getElementById("progress");
+  function update(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max)*100:0)+"%";
+  }
+  addEventListener("scroll",update,{passive:true});
+  update();
+})();
+
+/* ============================================================
+   Scroll-reveal (respects prefers-reduced-motion)
+   ============================================================ */
+(function(){
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var items=document.querySelectorAll(".reveal");
+  if(reduce||!("IntersectionObserver" in window)){
+    items.forEach(function(el){el.classList.add("in")});
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}
+    });
+  },{rootMargin:"0px 0px -8% 0px",threshold:.05});
+  items.forEach(function(el){io.observe(el)});
+})();
+
+/* ============================================================
+   Chapter navigation dots — active state
+   ============================================================ */
+(function(){
+  var links=document.querySelectorAll("nav.chapters a");
+  var map={};
+  links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a});
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.classList.remove("active")});
+        var a=map[e.target.id];
+        if(a)a.classList.add("active");
+      }
+    });
+  },{rootMargin:"-40% 0px -50% 0px"});
+  Object.keys(map).forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)io.observe(el);
+  });
+})();
+
+/* ============================================================
+   Message-volume chart (actual monthly counts)
+   ============================================================ */
+(function(){
+  var data=[
+    ["Mar 25",4508],["Apr 25",1186],["May 25",124],["Jun 25",23],
+    ["Jul 25",110],["Aug 25",63],["Sep 25",40],["Oct 25",167],
+    ["Nov 25",112],["Dec 25",133],["Jan 26",31],["Feb 26",342],
+    ["Mar 26",36],["Apr 26",1106],["May 26",2322],["Jun 26",695],
+    ["Jul 26",8809],["Aug 26",10740]
+  ];
+  var max=10740;
+  var host=document.getElementById("bars");
+  data.forEach(function(d){
+    var b=document.createElement("div");
+    b.className="bar"+(d[1]>4000?" hot":"");
+    b.style.height=Math.max(1.5,(d[1]/max)*100)+"%";
+    b.setAttribute("data-label",d[0]+" · "+d[1].toLocaleString()+" messages");
+    b.setAttribute("tabindex","0");
+    b.setAttribute("role","img");
+    b.setAttribute("aria-label",d[0]+": "+d[1]+" messages");
+    host.appendChild(b);
+  });
+})();
+</script>
+</body>
+</html>
