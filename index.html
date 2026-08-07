@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Five Meetings, Thirty Thousand Messages  The Story of Zulaikha &amp; Iqbal</title>
-<meta name="description" content="A long-form story drawn from a real conversation, March 2025 – August 2026.">
+<title>Lima Pertemuan, Tiga Puluh Ribu Bicara  Kisah Zulaikha &amp; Iqbal</title>
+<meta name="description" content="Sebuah kisah panjang yang disusun daripada perbualan sebenar, Mac 2025 – Ogos 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -43,22 +43,12 @@ body{
 ::selection{background:var(--accent);color:var(--paper)}
 
 /* ============================================================
-   2. READING PROGRESS + CHAPTER NAV
+   2. READING PROGRESS + CHAPTER NAV + LANGUAGE TOGGLE
    ============================================================ */
 #progress{
   position:fixed;top:0;left:0;height:3px;width:0;
   background:var(--accent);z-index:100;
 }
-.lang-toggle{
-  position:fixed;top:1.1rem;right:1.25rem;z-index:95;
-  font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink-soft);text-decoration:none;
-  border:1px solid var(--hairline);border-radius:99px;
-  padding:.45rem 1rem;background:#faf7f2cc;backdrop-filter:blur(6px);
-  transition:color .3s,border-color .3s;
-}
-.lang-toggle:hover,.lang-toggle:focus-visible{color:var(--accent);border-color:#a04b3c50}
-.lang-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 nav.chapters{
   position:fixed;right:1.25rem;top:50%;transform:translateY(-50%);
   display:flex;flex-direction:column;gap:.65rem;z-index:90;
@@ -86,9 +76,10 @@ a{color:var(--accent)}
   font-family:var(--sans);font-size:.72rem;font-weight:600;
   letter-spacing:.28em;text-transform:uppercase;color:var(--accent);
 }
-.chapter-sub{
-  font-family:var(--serif);font-style:italic;font-size:1.2rem;
-  color:var(--ink-soft);max-width:var(--measure);
+.stanza{
+  font-family:var(--serif);font-style:italic;font-size:1.25rem;
+  line-height:1.85;color:var(--ink-soft);max-width:var(--measure);
+  white-space:pre-line;
 }
 .period{
   font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
@@ -101,19 +92,24 @@ a{color:var(--accent)}
 .wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
 section.chapter{padding:7rem 0 3rem}
 section.chapter header{margin-bottom:3rem}
-section.chapter header h2{font-size:clamp(2rem,5.5vw,3.1rem);margin:.9rem 0 .8rem}
+section.chapter header h2{font-size:clamp(2rem,5.5vw,3.1rem);margin:.9rem 0 1.1rem}
 .prose p{margin-bottom:1.5rem}
 .prose p.lede{font-family:var(--serif);font-size:1.35rem;line-height:1.6;color:var(--ink)}
 
-hr.divider{
-  border:none;height:1px;background:var(--hairline);
-  max-width:200px;margin:4.5rem auto;position:relative;overflow:visible;
+/* Divider with pantun-rhythm couplet */
+.divider-verse{
+  max-width:520px;margin:5rem auto;padding:0 1.5rem;text-align:center;
+  position:relative;
 }
-hr.divider::after{
-  content:"❋";position:absolute;left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  background:var(--paper);padding:0 1rem;
-  color:var(--accent);font-size:.8rem;
+.divider-verse::before,.divider-verse::after{
+  content:"";display:block;height:1px;background:var(--hairline);
+  max-width:120px;margin:0 auto;
+}
+.divider-verse::before{margin-bottom:1.75rem}
+.divider-verse::after{margin-top:1.75rem}
+.divider-verse p{
+  font-family:var(--serif);font-style:italic;font-size:1.02rem;
+  line-height:1.9;color:var(--ink-soft);max-width:none;white-space:pre-line;
 }
 
 /* ============================================================
@@ -132,7 +128,8 @@ hr.divider::after{
 .hero h1 .amp{font-style:italic;color:var(--accent)}
 .hero .subtitle{
   font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.6vw,1.45rem);
-  color:var(--ink-soft);margin-top:2rem;max-width:44ch;line-height:1.6;
+  color:var(--ink-soft);margin-top:2rem;max-width:44ch;line-height:1.75;
+  white-space:pre-line;
 }
 .hero .meta{
   margin-top:3.5rem;display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center;
@@ -181,7 +178,7 @@ blockquote.pull cite{
 .msg.b .bubble{background:var(--accent-soft);border-color:#a04b3c30;border-bottom-right-radius:4px;text-align:left}
 .chat-note{
   font-size:.9rem;color:var(--ink-soft);font-style:italic;
-  max-width:var(--measure);margin:-1.5rem auto 3rem;max-width:480px;
+  margin:-1.5rem auto 3rem;max-width:480px;
 }
 
 /* Expandable interpretation */
@@ -269,6 +266,7 @@ footer p{margin:0 auto .75rem;font-size:.85rem;color:var(--ink-soft)}
   blockquote.pull{padding-left:1.25rem}
   .hero .meta{gap:1.5rem}
   .chat{padding:1.5rem 1rem}
+  .stanza{font-size:1.12rem}
 }
 </style>
 </head>
@@ -276,142 +274,160 @@ footer p{margin:0 auto .75rem;font-size:.85rem;color:var(--ink-soft)}
 
 <div id="progress" aria-hidden="true"></div>
 
-<a class="lang-toggle" href="kisah.html" lang="ms" hreflang="ms">Baca dalam Bahasa Melayu</a>
-
-<nav class="chapters" aria-label="Chapter navigation">
-  <a href="#hero" aria-label="Top"></a>
-  <a href="#ch1" aria-label="Chapter 1"></a>
-  <a href="#ch2" aria-label="Chapter 2"></a>
-  <a href="#ch3" aria-label="Chapter 3"></a>
-  <a href="#ch4" aria-label="Chapter 4"></a>
-  <a href="#ch5" aria-label="Chapter 5"></a>
-  <a href="#ch6" aria-label="Chapter 6"></a>
-  <a href="#ch7" aria-label="Chapter 7"></a>
-  <a href="#pattern" aria-label="The Pattern"></a>
-  <a href="#end" aria-label="Where the Story Stands"></a>
+<nav class="chapters" aria-label="Navigasi bab">
+  <a href="#hero" aria-label="Permulaan"></a>
+  <a href="#ch1" aria-label="Bab 1"></a>
+  <a href="#ch2" aria-label="Bab 2"></a>
+  <a href="#ch3" aria-label="Bab 3"></a>
+  <a href="#ch4" aria-label="Bab 4"></a>
+  <a href="#ch5" aria-label="Bab 5"></a>
+  <a href="#ch6" aria-label="Bab 6"></a>
+  <a href="#ch7" aria-label="Bab 7"></a>
+  <a href="#pattern" aria-label="Corak"></a>
+  <a href="#end" aria-label="Di Sini Kisah Berdiri"></a>
 </nav>
 
 <!-- ================= HERO ================= -->
 <header class="hero" id="hero">
-  <p class="kicker">The Story Of</p>
+  <p class="kicker">Kisah</p>
   <h1>Zulaikha <span class="amp">&amp;</span> Iqbal</h1>
-  <p class="subtitle">Five meetings. Thirty thousand messages. A conversation that was told to end where it stood  and quietly refused.</p>
+  <p class="subtitle">Lima pertemuan. Tiga puluh ribu bicara.
+Sebuah perbualan yang disuruh berakhir di situ 
+namun diam-diam enggan.</p>
   <div class="meta">
-    <span><strong>524</strong> days</span>
-    <span><strong>30,547</strong> messages</span>
-    <span><strong>2 Mar 2025  7 Aug 2026</strong> WhatsApp</span>
+    <span><strong>524</strong> hari</span>
+    <span><strong>30,547</strong> mesej</span>
+    <span><strong>2 Mac 2025  7 Ogos 2026</strong> WhatsApp</span>
   </div>
-  <a class="scroll-hint" href="#opening">Begin ↓</a>
+  <a class="scroll-hint" href="#opening">Mula ↓</a>
 </header>
 
 <main>
 
-<!-- ================= OPENING ================= -->
+<!-- ================= PEMBUKAAN ================= -->
 <section class="chapter" id="opening">
   <div class="wrap prose">
-    <p class="lede reveal">Some conversations announce themselves. This one arrived six seconds after midnight, during Ramadan, wearing a single word:</p>
+    <p class="lede reveal">Sesetengah perbualan tiba dengan gegak gempita. Yang ini tiba enam saat selepas tengah malam, di bulan Ramadan, membawa satu patah kata sahaja:</p>
     <blockquote class="pull reveal">Salam
-      <cite>Zulaikha  2 March 2025, 12:00 AM</cite>
+      <cite>Zulaikha  2 Mac 2025, 12:00 pagi</cite>
     </blockquote>
-    <p class="reveal">She needed help with treasurer duties for a campus programme. He answered within nine seconds, then sent six voice notes explaining budgets, receipts, and financial reports  at midnight, unprompted, in far more detail than the question required.</p>
-    <p class="reveal">Nobody involved would have called it the beginning of anything. But if you lay all 30,547 messages side by side  the way this story does  you can see it plainly: a line that rises, breaks, falls almost to silence for an entire year, and then returns louder than it ever was.</p>
-    <p class="reveal">This is not a love story, at least not officially. Both of them are very insistent about that. It is, by their own stubborn definition, a story about two <em>kawan</em>  two friends  and it should be read exactly the way it was written: with the label they chose, and everything underneath it.</p>
+    <p class="reveal">Dia perlukan bantuan tentang tugas bendahari untuk sebuah program kampus. Lelaki itu membalas dalam sembilan saat  kemudian menghantar enam nota suara menerangkan bajet, resit dan pelaporan kewangan. Pada tengah malam. Tanpa diminta. Jauh lebih terperinci daripada soalannya.</p>
+    <p class="reveal">Tiada siapa ketika itu yang akan menyebutnya sebagai permulaan apa-apa. Tetapi susunlah kesemua 30,547 mesej itu sebaris demi sebaris  sebagaimana kisah ini menyusunnya  dan ia kelihatan terang: satu garis yang menaik, patah, jatuh hampir senyap selama setahun penuh, lalu pulang semula. Lebih lantang daripada sebelumnya.</p>
+    <p class="reveal">Ini bukan kisah cinta  sekurang-kurangnya, bukan secara rasminya. Kedua-duanya amat tegas tentang itu. Ini, menurut takrif degil mereka sendiri, ialah kisah dua orang <em>kawan</em>  dan ia wajar dibaca sebagaimana ia ditulis: dengan gelaran yang mereka pilih, dan segala yang tersimpan di bawahnya.</p>
   </div>
 </section>
 
-<hr class="divider">
+<aside class="divider-verse reveal" aria-label="Selingan">
+  <p>Air yang tenang usah disangka tiada arusnya;
+kata yang biasa usah disangka tiada rahsianya.</p>
+</aside>
 
-<!-- ================= CHAPTER 1 ================= -->
+<!-- ================= BAB 1 ================= -->
 <section class="chapter" id="ch1">
   <div class="wrap">
     <header class="reveal">
-      <p class="kicker">Chapter One</p>
-      <h2>Welcome to PizzaHut</h2>
-      <p class="chapter-sub">In which a budget question becomes a scoreboard, and a scoreboard becomes an excuse to keep talking.</p>
-      <p class="period" style="margin-top:1rem">March 2025 · Ramadan · 4,508 messages</p>
+      <p class="kicker">Bab Satu</p>
+      <h2>Selamat Datang ke PizzaHut</h2>
+      <p class="stanza">Dua orang berbual di bulan puasa.
+Beberapa soalan, beberapa gurauan 
+dan sebuah papan mata
+yang peraturannya tiada siapa tahu.</p>
+      <p class="period" style="margin-top:1.25rem">Mac 2025 · Ramadan · 4,508 mesej</p>
     </header>
     <div class="prose">
-      <p class="reveal">Within the first two minutes of the conversation, she was already teasing him. His six earnest voice notes were met with:</p>
+      <p class="reveal">Belum pun dua minit perbualan bermula, dia sudah mula mengusik. Enam nota suara yang dihantar bersungguh-sungguh itu disambut dengan:</p>
     </div>
-    <div class="chat reveal" role="figure" aria-label="Chat fragment from 2 March 2025">
-      <p class="stamp">2 March 2025 · 12:00 AM</p>
+    <div class="chat reveal" role="figure" aria-label="Petikan perbualan 2 Mac 2025">
+      <p class="stamp">2 Mac 2025 · 12:00 pagi</p>
       <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">Selamat datang ke PizzaHut ! 🍕 Sila buat pesanan .</span></div>
       <div class="msg b"><span class="who">Iqbal</span><span class="bubble">PizzaHut pulakk</span></div>
       <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">HAHAHAHA bukan ek</span></div>
     </div>
     <div class="prose">
-      <p class="reveal">Seventeen minutes later he sent her a two-character message: <em>4-1</em>. A score. He had, apparently, unilaterally started keeping points in some game whose rules only he knew. She played along without asking for an explanation  <em>5-1</em>, she countered  and when he asked how many points it took to win, she answered: <em>secret</em>.</p>
-      <p class="reveal">That was the whole tone of March. It was Ramadan, and at 4:50 in the morning he wrote <em>Selamat Bersahur Aiqha</em>; ten minutes later she wrote it back. They met  briefly, shyly  at an iftar at their campus hall on 7 March, an encounter he prepared for by announcing, in advance, that he was bringing a friend along <em>sebab saya malu</em>. Because he was embarrassed.</p>
+      <p class="reveal">Tujuh belas minit kemudian, lelaki itu menghantar mesej dua aksara: <em>4-1</em>. Sebuah papan mata. Rupanya dia telah, tanpa mesyuarat, mula mengira markah dalam suatu permainan yang peraturannya hanya dia yang tahu. Gadis itu melayan tanpa meminta penjelasan  <em>5-1</em>, balasnya  dan apabila ditanya berapa mata diperlukan untuk menang, jawabnya pendek: <em>secret</em>.</p>
+      <p class="reveal">Begitulah nada sepanjang Mac. Bulan itu Ramadan; pada jam 4:50 pagi dia menulis <em>Selamat Bersahur Aiqha</em>, dan sepuluh minit kemudian ucapan itu dipulangkan. Mereka bertemu  sekejap, tersipu  di majlis berbuka puasa pada 7 Mac, satu pertemuan yang disiapkannya dengan mengumumkan awal-awal bahawa dia akan membawa seorang kawan <em>sebab saya malu</em>.</p>
     </div>
     <blockquote class="pull reveal">kalau meja saya kosong insyaAllah kita lepak se table
-      <cite>Zulaikha  2 March 2025</cite>
+      <cite>Zulaikha  2 Mac 2025</cite>
     </blockquote>
     <div class="prose">
-      <p class="reveal">In that single month they exchanged 4,508 messages  more than they would manage in the following twelve months combined. They talked through the night about clubs, emcee work, cats, and each other's supposed extroversion (he denied it: <em>kita ni dia ikut mood jugak</em>). She called him Iqbal. He called her Aiqha. Neither name would survive what came next.</p>
+      <p class="reveal">Dalam sebulan itu sahaja mereka bertukar 4,508 mesej  lebih banyak daripada jumlah dua belas bulan yang menyusul, dicampur sekali. Mereka berbual hingga larut tentang kelab, kerja pengacaraan, kucing, dan dakwaan ekstrovert masing-masing (yang dinafikannya: <em>kita ni dia ikut mood jugak</em>). Gadis itu memanggilnya Iqbal. Lelaki itu memanggilnya Aiqha. Kedua-dua nama itu tidak akan selamat melepasi apa yang datang selepasnya.</p>
     </div>
     <details class="why reveal">
-      <summary>Why this month matters</summary>
-      <div class="body">Almost every recurring pattern in this story is already present in the first 48 hours: her deadpan jokes, his over-thorough helpfulness, the invented games, the late hours, the mutual shyness about meeting in person. The conversation gives the impression that the ease between them was immediate  which makes what happened in April harder, not easier.</div>
+      <summary>Mengapa bulan ini penting</summary>
+      <div class="body">Hampir setiap corak yang berulang dalam kisah ini sudah pun hadir dalam 48 jam pertama: gurauan selamba si gadis, sifat terlebih-membantu si lelaki, permainan yang direka-reka, jam-jam yang larut, dan segan yang saling bertimbal setiap kali soal bertemu muka. Perbualan itu memberi kesan bahawa keserasian antara mereka datang serta-merta  dan itulah yang menjadikan apa yang berlaku pada bulan April lebih berat, bukan lebih ringan.</div>
     </details>
   </div>
 </section>
 
-<hr class="divider">
+<aside class="divider-verse reveal" aria-label="Selingan">
+  <p>Bukan semua surat menagih jawapan;
+ada yang dikirim sekadar melepaskan.</p>
+</aside>
 
-<!-- ================= CHAPTER 2 ================= -->
+<!-- ================= BAB 2 ================= -->
 <section class="chapter" id="ch2">
   <div class="wrap">
     <header class="reveal">
-      <p class="kicker">Chapter Two</p>
-      <h2>The Letter</h2>
-      <p class="chapter-sub">In which he says the thing, carefully; and she says no, kindly; and both of them behave better than most people ever do.</p>
-      <p class="period" style="margin-top:1rem">25–26 April 2025 · Eight messages</p>
+      <p class="kicker">Bab Dua</p>
+      <h2>Warkah</h2>
+      <p class="stanza">Dia menyusun kata bertahun dalam hati,
+dihantar pada suatu petang Jumaat.
+Jawapannya tiba dengan lembut 
+dan tetap sebuah tidak.</p>
+      <p class="period" style="margin-top:1.25rem">25–26 April 2025 · Lapan mesej</p>
     </header>
     <div class="prose">
-      <p class="reveal">On the afternoon of 25 April 2025, after nearly two months of talking, Iqbal sent the longest message of the entire conversation to that point. It was not a request to be together. He was explicit about that  he did not want a relationship conducted the wrong way. It was a declaration of intent, written in the register of someone who had rehearsed it many times:</p>
+      <p class="reveal">Pada petang 25 April 2025, selepas hampir dua bulan berbual, Iqbal menghantar mesej terpanjang dalam seluruh perbualan setakat itu. Ia bukan ajakan untuk bersama. Tentang itu dia sangat jelas  dia tidak mahu sebarang hubungan yang dijalankan dengan cara yang salah. Ia sebuah pernyataan niat, ditulis dalam nada seorang yang telah melatihnya berkali-kali:</p>
     </div>
     <blockquote class="pull reveal">Iqbal berniat untuk masuk dalam hidup Aiqha dengan cara yang halal dan terhormat.
-      <cite>Iqbal  25 April 2025, 2:03 PM</cite>
+      <cite>Iqbal  25 April 2025, 2:03 petang</cite>
     </blockquote>
     <div class="prose">
-      <p class="reveal">He asked for nothing in return except that she know. He wrote that the feeling had made him want to become a better version of himself, and that whatever her answer, <em>Iqbal tetap hormat dan terima</em>.</p>
-      <p class="reveal">Her reply came eight and a half hours later, at 10:38 that night. It is worth reading slowly, because it is one of the gentlest rejections a person can write:</p>
+      <p class="reveal">Dia tidak meminta apa-apa balasan, selain daripada gadis itu tahu. Dia menulis bahawa perasaan itu membuatkannya mahu menjadi versi dirinya yang lebih baik, dan apa pun jawapannya nanti, <em>Iqbal tetap hormat dan terima</em>.</p>
+      <p class="reveal">Balasannya tiba lapan jam setengah kemudian, jam 10:38 malam. Ia wajar dibaca perlahan-lahan, kerana ia antara penolakan paling halus yang mampu ditulis seorang manusia:</p>
     </div>
     <blockquote class="pull reveal">Iqbal ada hati yang baik dan matlamat hidup yang jelas, tapi Aiqha tak dapat nak balas perasaan Iqbal dengan rasa yang sama.
-      <cite>Zulaikha  25 April 2025, 10:38 PM</cite>
+      <cite>Zulaikha  25 April 2025, 10:38 malam</cite>
     </blockquote>
     <div class="prose">
-      <p class="reveal">She was still studying, she said. Love was not something she was chasing right now. She was sure he would find someone extraordinary. And she apologised, in advance, in case anything she had written stung.</p>
-      <p class="reveal">He answered within six minutes, thanked her for the way she had refused him, and told her he had already made istikharah  the prayer for guidance  many times before sending the message, and had accepted every possible outcome before he pressed send. Then, just after midnight, she closed the chapter with a sentence that would sit quietly over everything that followed:</p>
+      <p class="reveal">Dia masih belajar, katanya. Percintaan bukan sesuatu yang dikejarnya sekarang. Dia yakin lelaki itu akan bertemu seseorang yang luar biasa. Dan dia memohon maaf, terlebih dahulu, andai ada kata yang menyinggung.</p>
+      <p class="reveal">Lelaki itu membalas dalam enam minit  berterima kasih atas cara dia ditolak, dan memberitahu bahawa dia telah pun beristikharah berkali-kali sebelum menghantar warkah itu, dan telah redha dengan setiap kemungkinan sebelum jarinya menekan hantar. Kemudian, sejurus lepas tengah malam, gadis itu menutup bab tersebut dengan satu ayat yang akan terus tergantung, senyap, di atas segala yang menyusul:</p>
     </div>
-    <div class="chat reveal" role="figure" aria-label="Chat fragment from 26 April 2025">
-      <p class="stamp">26 April 2025 · 12:30 AM</p>
+    <div class="chat reveal" role="figure" aria-label="Petikan perbualan 26 April 2025">
+      <p class="stamp">26 April 2025 · 12:30 pagi</p>
       <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">Cerita sini biarlah habis sini. Biasalah manusia, lumrah untuk ada perasaan terhadap orang lain. Teruskan jadi Iqbal yang Happy 👍🏻</span></div>
       <div class="msg b"><span class="who">Iqbal</span><span class="bubble">Baikk Terima Kasih Aiqha</span></div>
       <div class="msg b"><span class="who">Iqbal</span><span class="bubble">Hati” esok berjalan</span></div>
       <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">Baik</span></div>
     </div>
-    <p class="chat-note reveal">"Let the story end here." It was meant kindly, and taken gracefully. It also turned out to be the single least accurate prediction in thirty thousand messages.</p>
+    <p class="chat-note reveal">"Cerita sini biarlah habis sini." Ia dimaksudkan dengan baik, dan diterima dengan tenang. Ia juga, akhirnya, menjadi ramalan yang paling tidak tepat dalam tiga puluh ribu mesej.</p>
   </div>
 </section>
 
-<hr class="divider">
+<aside class="divider-verse reveal" aria-label="Selingan">
+  <p>Jarak itu, katanya, bukanlah sempadan;
+hanya jeda panjang antara dua penantian.</p>
+</aside>
 
-<!-- ================= CHAPTER 3 ================= -->
+<!-- ================= BAB 3 ================= -->
 <section class="chapter" id="ch3">
   <div class="wrap">
     <header class="reveal">
-      <p class="kicker">Chapter Three</p>
+      <p class="kicker">Bab Tiga</p>
       <h2>Saudara &amp; Saudari</h2>
-      <p class="chapter-sub">In which a year passes at arm's length, held together by exam wishes and a formality that both of them kept perfectly.</p>
-      <p class="period" style="margin-top:1rem">May 2025  March 2026 · ~1,150 messages in eleven months</p>
+      <p class="stanza">Selepas sebuah tidak,
+ada yang memilih untuk senyap.
+Mereka memilih bahasa
+yang lebih sopan daripada senyap.</p>
+      <p class="period" style="margin-top:1.25rem">Mei 2025  Mac 2026 · ~1,150 mesej dalam sebelas bulan</p>
     </header>
     <div class="prose">
-      <p class="reveal">What happens after a refusal like that? In most stories, silence. Here, something stranger and more deliberate: they invented a new language for each other.</p>
-      <p class="reveal">Gone were <em>Iqbal</em> and <em>Aiqha</em>. In their place, with almost ceremonial consistency, came <em>saudara</em> and <em>saudari</em>  brother and sister in faith, the most carefully respectful form of address available to them. He used it in nearly every opening line for eleven months. She always answered in kind.</p>
+      <p class="reveal">Apa yang terjadi selepas penolakan sebegitu? Dalam kebanyakan kisah: senyap. Di sini, sesuatu yang lebih ganjil dan lebih tersusun  mereka mencipta bahasa baharu untuk satu sama lain.</p>
+      <p class="reveal">Hilanglah <em>Iqbal</em> dan <em>Aiqha</em>. Menggantikannya, dengan ketekalan yang hampir beristiadat, ialah <em>saudara</em> dan <em>saudari</em>  panggilan paling cermat dan paling hormat yang ada pada mereka. Lelaki itu menggunakannya pada hampir setiap baris pembuka selama sebelas bulan. Gadis itu sentiasa membalas dengan bahasa yang sama.</p>
     </div>
-    <div class="chat reveal" role="figure" aria-label="Chat fragment from June 2025">
-      <p class="stamp">18 June 2025  after 18 days of silence</p>
+    <div class="chat reveal" role="figure" aria-label="Petikan perbualan Jun 2025">
+      <p class="stamp">18 Jun 2025  selepas 18 hari senyap</p>
       <div class="msg b"><span class="who">Iqbal</span><span class="bubble">Assalamualaikum saudari Zulaikha
 Saya ada soalan yang hendak dipertanyakan</span></div>
       <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">Waalaikumsalam saudara Iqbal.
@@ -419,212 +435,245 @@ Saya tidak terlibat dengan program tersebut</span></div>
       <div class="msg b"><span class="who">Iqbal</span><span class="bubble">Wahh formal betul jawapan saudari</span></div>
     </div>
     <div class="prose">
-      <p class="reveal">The numbers tell you how thin the thread became: 124 messages in May. Twenty-three in June. Forty in September. Thirty-one in the whole of January. There were gaps of eighteen days, twenty-three days, thirty-six days.</p>
-      <p class="reveal">But the thread never actually broke, and it is worth noticing <em>what</em> it was made of. He remembered her exam schedule and wished her luck before papers  then checked in afterwards to ask how they went. He sent her his portfolio to test. He sent her his first TikTok videos and asked for her honest review (<em>Inspired dari saudari lah ni</em>, he admitted). Of the 168 days on which anyone spoke at all across the whole conversation, he was the one who spoke first on 130 of them.</p>
-      <p class="reveal">And once, at 2:31 in the morning on New Year's Day 2026, watching the same fireworks from opposite ends of a distance neither of them had chosen words for, he wrote: <em>Saya rasa saya nampak saudari tadi.</em> I think I saw you just now. Her reply, hours later, was three words and a sigh:</p>
+      <p class="reveal">Angka-angka menunjukkan betapa halusnya benang itu menjadi: 124 mesej pada Mei. Dua puluh tiga pada Jun. Empat puluh pada September. Tiga puluh satu untuk seluruh Januari. Ada jurang lapan belas hari, dua puluh tiga hari, tiga puluh enam hari.</p>
+      <p class="reveal">Tetapi benang itu tidak pernah benar-benar putus  dan perhatikanlah <em>daripada apa</em> ia dianyam. Lelaki itu mengingati jadual peperiksaannya, mengucapkan semoga berjaya sebelum setiap kertas  kemudian bertanya khabar selepasnya. Dia menghantar portfolio untuk diuji. Dia menghantar video TikTok pertamanya dan meminta ulasan jujur (<em>Inspired dari saudari lah ni</em>, akuinya). Daripada 168 hari yang ada sebarang bicara dalam seluruh perbualan ini, dialah yang menyapa dahulu pada 130 daripadanya.</p>
+      <p class="reveal">Dan sekali, pada jam 2:31 pagi menjelang tahun baharu 2026  menonton bunga api yang sama dari dua hujung jarak yang belum bernama  lelaki itu menulis: <em>Saya rasa saya nampak saudari tadi.</em> Balasan gadis itu, beberapa jam kemudian, hanyalah tiga patah kata dan sebuah keluhan:</p>
     </div>
     <blockquote class="pull reveal">lain rasanya.. 😔
-      <cite>Zulaikha  1 January 2026, 6:18 AM</cite>
+      <cite>Zulaikha  1 Januari 2026, 6:18 pagi</cite>
     </blockquote>
     <details class="why reveal">
-      <summary>Between the lines</summary>
-      <div class="body">It is impossible to know from the messages alone what either of them felt during this year, and this story will not pretend otherwise. What the record does show is behaviour: he never once referred back to April, never pressed, never sulked  and never stopped showing up in small, deniable ways. She never once told him to stop. One possible reading is that "saudara/saudari" was less a wall than a truce: a way to keep the door open while honouring, to the letter, what she had asked for.</div>
+      <summary>Antara baris</summary>
+      <div class="body">Mustahil untuk mengetahui, daripada mesej semata-mata, apa yang dirasakan mereka sepanjang tahun ini  dan kisah ini tidak akan berpura-pura tahu. Yang ditunjukkan rekod hanyalah perbuatan: lelaki itu tidak pernah sekali pun mengungkit April, tidak pernah mendesak, tidak pernah merajuk  dan tidak pernah berhenti hadir dalam cara-cara yang kecil dan mudah dinafikan. Gadis itu pula tidak pernah sekali pun menyuruhnya berhenti. Satu tafsiran yang mungkin: "saudara/saudari" itu bukanlah tembok, tetapi gencatan  cara mengekalkan pintu terbuka sambil menunaikan, sehabis huruf, apa yang diminta.</div>
     </details>
   </div>
 </section>
 
-<hr class="divider">
+<aside class="divider-verse reveal" aria-label="Selingan">
+  <p>Hujan tidak pernah meminta izin untuk pulang;
+ia turun sahaja, perlahan-lahan.</p>
+</aside>
 
-<!-- ================= CHAPTER 4 ================= -->
+<!-- ================= BAB 4 ================= -->
 <section class="chapter" id="ch4">
   <div class="wrap">
     <header class="reveal">
-      <p class="kicker">Chapter Four</p>
-      <h2>The Way Back</h2>
-      <p class="chapter-sub">In which nothing dramatic happens  which is exactly how everything starts again.</p>
-      <p class="period" style="margin-top:1rem">April  May 2026 · 3,428 messages</p>
+      <p class="kicker">Bab Empat</p>
+      <h2>Jalan Pulang</h2>
+      <p class="stanza">Tiada guruh, tiada tanda besar.
+Hanya sebuah pautan TikTok,
+sebuah tinjauan kaji selidik,
+dan malam yang memanjang semula.</p>
+      <p class="period" style="margin-top:1.25rem">April  Mei 2026 · 3,428 mesej</p>
     </header>
     <div class="prose">
-      <p class="reveal">There is no single message where the conversation comes back to life. It returns the way weather changes: a TikTok link here, a survey he volunteered to answer there ("saya ni penjawab survey professional tau 🤓"), a promotion for his new photography service that turned, without anyone deciding it should, into a two-hour conversation about haunted dormitories in Segamat.</p>
-      <p class="reveal">By late April 2026 they were talking past midnight again. The old rhythm reassembled itself piece by piece  her deadpan, his HAHAHAHAHA, the mock-formal <em>saudari</em> now carrying a completely different temperature. One night he observed, mid-conversation:</p>
+      <p class="reveal">Tiada satu mesej pun yang boleh ditunjuk sebagai saat perbualan ini hidup semula. Ia pulang sebagaimana cuaca berubah: pautan TikTok di sini, kaji selidik yang disukarelakannya di sana ("saya ni penjawab survey professional tau 🤓"), promosi servis fotografi barunya yang bertukar  tanpa sesiapa memutuskan ia patut  menjadi perbualan dua jam tentang asrama berhantu di Segamat.</p>
+      <p class="reveal">Menjelang hujung April 2026 mereka kembali berbual melepasi tengah malam. Irama lama tersusun semula sekeping demi sekeping  selamba si gadis, HAHAHAHAHA si lelaki, dan panggilan <em>saudari</em> yang berpura formal itu kini membawa suhu yang langsung berbeza. Pada suatu malam, di tengah perbualan, lelaki itu membuat pemerhatian:</p>
     </div>
     <blockquote class="pull reveal">Saya rasa kan saudari kita kalau borak ni depan-depan kan dah boleh jadi podcast rasanya
-      <cite>Iqbal  26 April 2026, 11:17 PM</cite>
+      <cite>Iqbal  26 April 2026, 11:17 malam</cite>
     </blockquote>
     <div class="prose">
-      <p class="reveal">She agreed the podcast would run two hours minimum. The message counts agree with her: 1,106 in April, then 2,322 in May. Exactly one year after the letter, neither of them mentioned the anniversary. Both of them were online that night.</p>
+      <p class="reveal">Gadis itu bersetuju  podcast mereka pasti dua jam, paling kurang. Angka-angka menyokongnya: 1,106 mesej pada April, kemudian 2,322 pada Mei. Genap setahun selepas warkah itu, tiada siapa yang menyebut ulang tahunnya. Kedua-duanya berada dalam talian pada malam itu.</p>
     </div>
   </div>
 </section>
 
-<hr class="divider">
+<aside class="divider-verse reveal" aria-label="Selingan">
+  <p>Luka yang dibalut rapi masih luka jua;
+ia cuma menunggu tangan yang tahu membukanya.</p>
+</aside>
 
-<!-- ================= CHAPTER 5 ================= -->
+<!-- ================= BAB 5 ================= -->
 <section class="chapter" id="ch5">
   <div class="wrap">
     <header class="reveal">
-      <p class="kicker">Chapter Five</p>
-      <h2>The Night of Nine Years</h2>
-      <p class="chapter-sub">In which two people trade the stories they don't tell anyone, and the conversation stops being casual for good.</p>
-      <p class="period" style="margin-top:1rem">7–8 May 2026 · one night, 561 messages</p>
+      <p class="kicker">Bab Lima</p>
+      <h2>Malam Sembilan Tahun</h2>
+      <p class="stanza">Ada cerita yang disimpan sembilan tahun,
+dibalut rapi seperti luka.
+Malam itu ia dibuka satu persatu 
+kepada orang yang pernah ditolaknya.</p>
+      <p class="period" style="margin-top:1.25rem">7–8 Mei 2026 · satu malam, 561 mesej</p>
     </header>
     <div class="prose">
-      <p class="reveal">On the night of 7 May 2026, a conversation about a missed train turned into something else. He apologised for oversharing; she told him to go on. Then, some time after midnight, the subject turned to trust  and she said something she had apparently never told him in fourteen months of talking:</p>
+      <p class="reveal">Pada malam 7 Mei 2026, sebuah cerita tentang keretapi yang tertinggal bertukar menjadi sesuatu yang lain. Gadis itu memohon maaf kerana terlebih bercerita; Lelaki itu menyuruhnya teruskan. Kemudian, entah pukul berapa lepas tengah malam, bicara beralih kepada soal percaya  dan gadis itu menyebut sesuatu yang, setakat rekod ini, tidak pernah diberitahunya dalam empat belas bulan berbual:</p>
     </div>
     <blockquote class="pull reveal">saya pernah trauma satu kali dalam hidup saya, which is dicurangi. … sejak itu, saya tak pernah percaya yang lelaki tulus wujud.
-      <cite>Zulaikha  8 May 2026, 12:30 AM</cite>
+      <cite>Zulaikha  8 Mei 2026, 12:30 pagi</cite>
     </blockquote>
     <div class="prose">
-      <p class="reveal">What followed was the longest and most careful exchange in the entire archive. He went first  told her about a one-month relationship from his diploma years that he had ended out of shame and repentance, the friend who pulled him back, the promise they made to keep each other accountable. Then, year by year, she told him her story: a boy their families both knew, nine years of orbits and returns, and a final betrayal  six months spent believing she had finally been chosen, only to learn he had never actually been free.</p>
+      <p class="reveal">Yang menyusul ialah pertukaran paling panjang dan paling berhati-hati dalam seluruh arkib. Lelaki itu pergi dahulu  menceritakan sebuah hubungan sebulan dari zaman diplomanya yang ditinggalkannya kerana malu dan taubat, sahabat yang menariknya pulang, dan janji mereka untuk saling menjaga amalan. Kemudian, tahun demi tahun, gadis itu membentangkan kisahnya: seorang lelaki yang dikenali kedua-dua keluarga, sembilan tahun berlegar dan berpatah balik, dan sebuah pengkhianatan di penghujungnya  enam bulan dia percaya dirinya akhirnya dipilih, hanya untuk tahu lelaki itu tidak pernah pun bebas.</p>
     </div>
     <blockquote class="pull reveal">sakitnya masih berbekas. amarah, kecewa, luka. semua saya balut rapi dan tersimpan hingga ke hari ini
-      <cite>Zulaikha  8 May 2026, 12:31 AM</cite>
+      <cite>Zulaikha  8 Mei 2026, 12:31 pagi</cite>
     </blockquote>
     <div class="prose">
-      <p class="reveal">He did not offer solutions. He got angry on her behalf (<em>Geram saya dengar cerita saudari ni</em>), asked the questions she wanted asked, and stayed until the story was finished  which took, by her own estimate, most of the night.</p>
-      <p class="reveal">Nothing was declared afterwards. But the record shows a clean line: before this night, they were two people who joked well together. After it, there was no subject they didn't touch.</p>
+      <p class="reveal">Lelaki itu tidak menawarkan penyelesaian. Dia marah bagi pihaknya (<em>Geram saya dengar cerita saudari ni</em>), bertanya soalan-soalan yang memang mahu ditanyakan kepadanya, dan tinggal sehingga cerita itu selesai  yang mengambil masa, menurut anggaran gadis itu sendiri, hampir semalaman.</p>
+      <p class="reveal">Tiada apa yang diisytiharkan selepasnya. Tetapi rekod menunjukkan satu garis yang bersih: sebelum malam ini, mereka dua orang yang pandai bergurau bersama. Selepasnya, tiada lagi tajuk yang tidak mereka sentuh.</p>
     </div>
     <details class="why reveal">
-      <summary>Why this night matters</summary>
-      <div class="body">Her sentence  "saya tak pernah percaya yang lelaki tulus wujud", <em>I stopped believing sincere men exist</em>  retroactively explains April 2025 in a way she never did at the time, and may not have intended to now. It also reframes everything he had done since: the eleven months of exam wishes and scrupulous formality read, in hindsight, like a long answer to a doubt he didn't yet know she had. That reading is interpretation, not fact. But it is hard to unsee.</div>
+      <summary>Mengapa malam ini penting</summary>
+      <div class="body">Ayatnya  "saya tak pernah percaya yang lelaki tulus wujud"  secara berundur menjelaskan April 2025 dengan cara yang tidak pernah dijelaskannya ketika itu, dan mungkin tidak berniat menjelaskannya sekarang. Ia juga membingkai semula segala yang dilakukan lelaki itu sejak itu: sebelas bulan ucapan peperiksaan dan bahasa yang tertib itu terbaca, apabila menoleh, seperti sebuah jawapan panjang kepada keraguan yang belum diketahuinya wujud. Bacaan ini tafsiran, bukan fakta. Tetapi ia sukar untuk tidak dilihat.</div>
     </details>
   </div>
 </section>
 
-<hr class="divider">
+<aside class="divider-verse reveal" aria-label="Selingan">
+  <p>Rindu yang dinafikan tiga kali
+lebih jujur daripada ikrar seribu kali.</p>
+</aside>
 
-<!-- ================= CHAPTER 6 ================= -->
+<!-- ================= BAB 6 ================= -->
 <section class="chapter" id="ch6">
   <div class="wrap">
     <header class="reveal">
-      <p class="kicker">Chapter Six</p>
+      <p class="kicker">Bab Enam</p>
       <h2>"Kawan Tak Boleh Rindu Kawan Ke?"</h2>
-      <p class="chapter-sub">In which a word neither of them will define gets said several hundred times, strictly between friends.</p>
-      <p class="period" style="margin-top:1rem">July 2026 · 8,809 messages · first video call: 3 hours</p>
+      <p class="stanza">Satu perkataan masuk ke dalam perbualan
+dan enggan keluar.
+Rindu, katanya.
+Antara kawan, katanya.</p>
+      <p class="period" style="margin-top:1.25rem">Julai 2026 · 8,809 mesej · panggilan video pertama: 3 jam</p>
     </header>
     <div class="prose">
-      <p class="reveal">July 2026 is where the chart stops looking like a friendship and starts looking like a fever. Eight thousand eight hundred messages  nearly double the previous record, set during that first Ramadan seventeen months earlier.</p>
-      <p class="reveal">The month has its own milestones, small and unmistakable. On 14 July, her first heart emoji  deployed, characteristically, as a joke about him drinking the green tea she wanted (<em>heart is hurt</em> 💔❤️‍🩹). On 19 July, at one in the morning: <em>do you want to hear a joke… i cried. thats the joke.</em> He stayed up asking careful questions until she felt better. That same week he sent her, unprompted, a message that began with his full name and the exact hour of his birth  the kind of biography you write for someone's family, not for a friend.</p>
-      <p class="reveal">And on 24 July, at 12:35 in the morning, after seventeen months of text: the first video call. It lasted three hours.</p>
-      <p class="reveal">Then the word arrived. <em>Rindu.</em> Missing someone. Once it entered the conversation neither of them could put it down  and neither of them would own it, either. What followed was a negotiation conducted entirely in capital letters:</p>
+      <p class="reveal">Julai 2026 ialah tempat carta ini berhenti kelihatan seperti persahabatan dan mula kelihatan seperti demam. Lapan ribu lapan ratus mesej  hampir dua kali ganda rekod lama, yang dicipta pada Ramadan pertama itu, tujuh belas bulan sebelumnya.</p>
+      <p class="reveal">Bulan itu punya tanda-tanda kecilnya sendiri, halus tetapi tidak mungkin tersilap baca. Pada 14 Julai, emoji hati pertamanya  dilepaskan, sebagaimana biasa, sebagai gurauan tentang teh hijau yang diminum lelaki itu (<em>heart is hurt</em> 💔❤️‍🩹). Pada 19 Julai, jam satu pagi: <em>do you want to hear a joke… i cried. thats the joke.</em> Lelaki itu berjaga, bertanya perlahan-lahan, sehingga gurauan itu tidak perlu lagi menjadi topeng. Pada minggu yang sama, tanpa diminta, dia menghantar sebuah mesej yang bermula dengan nama penuhnya dan jam kelahirannya yang tepat  jenis riwayat yang ditulis untuk keluarga seseorang, bukan untuk seorang kawan.</p>
+      <p class="reveal">Dan pada 24 Julai, jam 12:35 pagi, selepas tujuh belas bulan bertulisan: panggilan video pertama. Tiga jam lamanya.</p>
+      <p class="reveal">Kemudian tibalah perkataan itu. <em>Rindu.</em> Sekali ia masuk ke dalam perbualan, tiada siapa yang mampu meletakkannya kembali  dan tiada siapa pula yang mahu mengakuinya. Yang menyusul ialah sebuah rundingan, dijalankan sepenuhnya dalam huruf besar:</p>
     </div>
-    <div class="chat reveal" role="figure" aria-label="Chat fragment from 1 August 2026">
-      <p class="stamp">1 August 2026</p>
+    <div class="chat reveal" role="figure" aria-label="Petikan perbualan 1 Ogos 2026">
+      <p class="stamp">1 Ogos 2026</p>
       <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">rindu ke</span></div>
       <div class="msg b"><span class="who">Iqbal</span><span class="bubble">APAAA KAWAN TAK BOLEH RINDU KAWAN KE</span></div>
       <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">cakap je la rindu</span></div>
       <div class="msg b"><span class="who">Iqbal</span><span class="bubble">RINDU LAH</span></div>
       <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">rindu betul ya, kawan sorang ni.. 😏</span></div>
     </div>
-    <p class="chat-note reveal">"What  can't a friend miss a friend?" The word <em>kawan</em> is doing an extraordinary amount of work in this exchange, and both parties appear to know it.</p>
+    <p class="chat-note reveal">Perkataan <em>kawan</em> sedang memikul beban yang luar biasa berat dalam pertukaran ini  dan kedua-dua pihak, nampaknya, sama-sama tahu.</p>
   </div>
 </section>
 
-<hr class="divider">
+<aside class="divider-verse reveal" aria-label="Selingan">
+  <p>Nama yang dipendekkan bukan kehilangan hurufnya;
+ia kehilangan orang lain yang berhak menyebutnya.</p>
+</aside>
 
-<!-- ================= CHAPTER 7 ================= -->
+<!-- ================= BAB 7 ================= -->
 <section class="chapter" id="ch7">
   <div class="wrap">
     <header class="reveal">
-      <p class="kicker">Chapter Seven</p>
+      <p class="kicker">Bab Tujuh</p>
       <h2>Juju</h2>
-      <p class="chapter-sub">In which seven days produce ten thousand messages, a five-hour phone call, and a name that belongs to no one else.</p>
-      <p class="period" style="margin-top:1rem">1–7 August 2026 · 10,740 messages · longest call: 5 hours</p>
+      <p class="stanza">Tujuh hari, sepuluh ribu mesej.
+Nama panjang menjadi pendek 
+Zulaikha menjadi juju 
+dan setiap pagi ada pemiliknya.</p>
+      <p class="period" style="margin-top:1.25rem">1–7 Ogos 2026 · 10,740 mesej · panggilan terpanjang: 5 jam</p>
     </header>
     <div class="prose">
-      <p class="reveal">The first week of August 2026 contains more messages than the first fourteen months of the conversation combined. The six busiest days in the entire archive are the six most recent. On 1 August alone: 2,380 messages.</p>
-      <p class="reveal">Text stopped being enough. The call log for this single week reads like a confession the chat kept refusing to make in words: a four-hour voice call starting at 1:47 AM. A two-hour video call. Another four-hour call. And on the night of 6 August, beginning four minutes before midnight  a voice call lasting five hours, ending somewhere near dawn.</p>
-      <p class="reveal">On the afternoon of 4 August, in the middle of ordinary logistics, it finally slipped out in plain text  and was returned within sixty seconds:</p>
+      <p class="reveal">Minggu pertama Ogos 2026 memuatkan lebih banyak mesej daripada empat belas bulan pertama perbualan ini dicampur sekali. Enam hari paling sibuk dalam seluruh arkib ialah enam hari yang paling baharu. Pada 1 Ogos sahaja: 2,380 mesej.</p>
+      <p class="reveal">Tulisan tidak lagi mencukupi. Log panggilan untuk minggu ini terbaca seperti pengakuan yang tidak sanggup dibuat oleh teks: panggilan suara empat jam bermula 1:47 pagi. Panggilan video dua jam. Empat jam sekali lagi. Dan pada malam 6 Ogos, bermula empat minit sebelum tengah malam  sebuah panggilan suara selama lima jam, berakhir entah di mana dekat subuh.</p>
+      <p class="reveal">Pada petang 4 Ogos, di tengah-tengah urusan yang paling biasa, ia akhirnya terlepas dalam tulisan  dan dipulangkan dalam masa enam puluh saat:</p>
     </div>
-    <div class="chat reveal" role="figure" aria-label="Chat fragment from 4 August 2026">
-      <p class="stamp">4 August 2026 · 5:00 PM</p>
+    <div class="chat reveal" role="figure" aria-label="Petikan perbualan 4 Ogos 2026">
+      <p class="stamp">4 Ogos 2026 · 5:00 petang</p>
       <div class="msg a"><span class="who">Zulaikha</span><span class="bubble">thankyou doooo saifullllll ya allahhhh sayang do kamu</span></div>
       <div class="msg b"><span class="who">Iqbal</span><span class="bubble">Ye doo sayang kamu jugakk do 🌸</span></div>
     </div>
     <div class="prose">
-      <p class="reveal">Was it retracted? Softened? Quite the opposite  it became a ritual. Two nights later: <em>Saya sangat sayang kamu tau FREN 🌸🌸</em>, answered with <em>sayang kamu juga kawan kesayangan 😊✨</em>. The label <em>kawan</em>  friend  is never dropped. It is simply made to carry more and more until the word itself becomes the joke: <em>kawan kesayangan</em>, the beloved friend. He tested the same line from his side, deadpan: <em>Who need girlfriend / When you got your bestie.</em></p>
-      <p class="reveal">Somewhere in this week she stopped being <em>saudari</em> for good and became <em>juju</em>  his own compression of Zulaikha, a name that exists nowhere else. On the morning of 7 August, the most recent day in the archive, the first message of the day was his, sent at 6:00 AM sharp: <em>Morningg jujuuuu 🫵🌸</em>. Later that afternoon, mid-conversation, she called him <em>dear</em>  for the first time in 524 days  inside a sentence so ordinary it almost slipped past: <em>not sure yet dear.</em></p>
-      <p class="reveal">And on 6 August, at 6:59 in the morning, it was Zulaikha herself  the author of <em>cerita sini biarlah habis sini</em>  who finally said the thing out loud:</p>
+      <p class="reveal">Ditarik balik? Dilembutkan? Sebaliknya  ia menjadi adat. Dua malam kemudian: <em>Saya sangat sayang kamu tau FREN 🌸🌸</em>, dibalas dengan <em>sayang kamu juga kawan kesayangan 😊✨</em>. Gelaran <em>kawan</em> tidak pernah digugurkan. Ia cuma disuruh memikul lebih dan lebih lagi, sehingga perkataan itu sendiri menjadi gurauannya: <em>kawan kesayangan</em>. Lelaki itu menguji garisan yang sama dari pihaknya, selamba: <em>Who need girlfriend / When you got your bestie.</em></p>
+      <p class="reveal">Di suatu tempat dalam minggu ini, gadis itu berhenti menjadi <em>saudari</em> buat selamanya, dan menjadi <em>juju</em>  ringkasan lelaki itu sendiri untuk Zulaikha, sebuah nama yang tidak wujud di mana-mana lagi. Pada pagi 7 Ogos, hari terbaru dalam arkib, mesej pertama hari itu miliknya, dihantar tepat jam 6:00 pagi: <em>Morningg jujuuuu 🫵🌸</em>. Petangnya, di tengah perbualan, gadis itu memanggilnya <em>dear</em>  kali pertama dalam 524 hari  di dalam sebuah ayat yang begitu biasa sehingga hampir terlepas pandang: <em>not sure yet dear.</em></p>
+      <p class="reveal">Dan pada 6 Ogos, jam 6:59 pagi, Zulaikha sendiri  penulis ayat <em>cerita sini biarlah habis sini</em> itu  yang akhirnya menyebutnya dengan lantang:</p>
     </div>
     <blockquote class="pull reveal">isnt it weird that we pernah jumpa 5 times je and we keep on saying rindu
-      <cite>Zulaikha  6 August 2026, 6:59 AM</cite>
+      <cite>Zulaikha  6 Ogos 2026, 6:59 pagi</cite>
     </blockquote>
     <div class="prose">
-      <p class="reveal">Five meetings. In seventeen months. His answer did not resolve the weirdness; it enrolled in it: <em>Not even meet but rinduu.</em></p>
+      <p class="reveal">Lima pertemuan. Dalam tujuh belas bulan. Jawapan lelaki itu tidak menyelesaikan keganjilannya; ia mendaftarkan diri ke dalamnya: <em>Not even meet but rinduu.</em></p>
     </div>
   </div>
 </section>
 
-<hr class="divider">
+<aside class="divider-verse reveal" aria-label="Selingan">
+  <p>Angka tidak pandai berbohong;
+ia cuma tidak tahu bila harus diam.</p>
+</aside>
 
-<!-- ================= THE PATTERN ================= -->
+<!-- ================= CORAK ================= -->
 <section class="chapter" id="pattern">
   <div class="wrap">
     <header class="reveal">
-      <p class="kicker">The Pattern</p>
-      <h2>What the Numbers Refuse to Hide</h2>
+      <p class="kicker">Corak</p>
+      <h2>Apa Yang Angka Enggan Sembunyikan</h2>
     </header>
-    <div class="chart reveal" role="figure" aria-label="Bar chart of messages per month, March 2025 to August 2026">
-      <p class="chart-title">Messages per month · Mar 2025  Aug 2026</p>
+    <div class="chart reveal" role="figure" aria-label="Carta palang mesej sebulan, Mac 2025 hingga Ogos 2026">
+      <p class="chart-title">Mesej sebulan · Mac 2025  Ogos 2026</p>
       <div class="bars" id="bars"></div>
       <div class="labels">
-        <span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span>
-        <span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span>
+        <span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>O</span><span>S</span><span>O</span><span>N</span><span>D</span>
+        <span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>O</span>
       </div>
-      <p class="chart-caption">An interpretive visualization of actual monthly message counts. The August 2026 bar covers only seven days. The long valley in the middle is the year of <em>saudara</em> and <em>saudari</em>.</p>
+      <p class="chart-caption">Visualisasi tafsiran daripada kiraan mesej bulanan yang sebenar. Palang Ogos 2026 hanya meliputi tujuh hari. Lembah panjang di tengah itu  itulah tahun <em>saudara</em> dan <em>saudari</em>.</p>
     </div>
     <div class="stats reveal">
-      <div><strong>30,547</strong><span>messages</span></div>
-      <div><strong>5</strong><span>meetings in person</span></div>
-      <div><strong>5 hrs</strong><span>longest single call</span></div>
-      <div><strong>1,736</strong><span>stickers exchanged</span></div>
-      <div><strong>130 / 38</strong><span>days he spoke first / she did</span></div>
-      <div><strong>1,300+</strong><span>messages containing laughter</span></div>
+      <div><strong>30,547</strong><span>mesej</span></div>
+      <div><strong>5</strong><span>pertemuan bersemuka</span></div>
+      <div><strong>5 jam</strong><span>panggilan terpanjang</span></div>
+      <div><strong>1,736</strong><span>pelekat bertukar tangan</span></div>
+      <div><strong>130 / 38</strong><span>hari dia menyapa dulu / dia</span></div>
+      <div><strong>1,300+</strong><span>mesej berisi tawa</span></div>
     </div>
     <div class="prose">
-      <p class="reveal">A few facts, for the record. He has sent more messages (16,490 to her 14,057) and asks nearly twice as many questions. Her single most-used emoji, by an enormous margin, is 😭  deployed 317 times, almost always while laughing. The word <em>rindu</em>, absent for more than a year, appears over seventy times in the first week of August alone.</p>
-      <p class="reveal">And one small thing the numbers catch that memory might not: the conversation's very first message and its current era both begin the same way. In March 2025 she opened with <em>Salam</em> at midnight. In August 2026 he opens every morning with hers.</p>
+      <p class="reveal">Beberapa fakta, untuk rekod. Lelaki itu menghantar lebih banyak mesej (16,490 berbanding 14,057) dan bertanya hampir dua kali ganda lebih banyak soalan. Emoji paling kerap gadis itu, dengan jurang yang besar, ialah 😭  digunakan 317 kali, hampir selalunya sambil ketawa. Perkataan <em>rindu</em>, yang menghilang lebih setahun, muncul lebih tujuh puluh kali dalam minggu pertama Ogos sahaja.</p>
+      <p class="reveal">Dan satu perkara kecil yang ditangkap angka, yang mungkin terlepas oleh ingatan: mesej pertama perbualan ini dan zamannya yang sekarang bermula dengan cara yang sama. Pada Mac 2025, gadis itu membuka dengan <em>Salam</em> pada tengah malam. Pada Ogos 2026, lelaki itu membuka setiap pagi dengan paginya.</p>
     </div>
   </div>
 </section>
 
-<hr class="divider">
+<aside class="divider-verse reveal" aria-label="Selingan">
+  <p>Yang terucap sudah menjadi milik dunia;
+yang belum, masih milik mereka berdua.</p>
+</aside>
 
-<!-- ================= THE THINGS THEY DIDN'T SAY ================= -->
+<!-- ================= YANG BELUM TERUCAP ================= -->
 <section class="chapter" id="unsaid">
   <div class="wrap">
     <header class="reveal">
-      <p class="kicker">Between the Lines</p>
-      <h2>The Things They Haven't Said</h2>
+      <p class="kicker">Antara Baris</p>
+      <h2>Yang Belum Mereka Ucapkan</h2>
     </header>
     <div class="prose">
-      <p class="reveal">In seventeen months and thirty thousand messages, the letter of 25 April 2025 has never once been mentioned again. Not by him  who promised he wouldn't  and not by her, who asked for exactly that. It sits in the archive like a sealed room in a house both of them still live in.</p>
-      <p class="reveal">No one has asked the question that her own message of 6 August walks directly up to. <em>Isn't it weird?</em>  is as close as either has come, and it was left, deliberately or not, as a rhetorical one. The words <em>sayang</em> and <em>rindu</em> flow freely now, but always wearing the uniform of <em>kawan</em>, <em>fren</em>, <em>bestie</em>  a costume that fools neither the reader nor, one suspects, the people wearing it.</p>
-      <p class="reveal">There is no way to know for certain what either of them intends. What can be said, strictly from the evidence: she once told him she no longer believed sincere men exist, and has since spent five hundred nights collecting counter-evidence from the same source. And he once wrote that when he was ready, he intended to enter her life <em>dengan cara yang halal dan terhormat</em>  and has conducted himself, for 524 days and counting, like a man who meant it.</p>
+      <p class="reveal">Dalam tujuh belas bulan dan tiga puluh ribu mesej, warkah 25 April 2025 itu tidak pernah disebut lagi walau sekali. Tidak oleh lelaki itu  yang berjanji tidak akan  dan tidak oleh gadis itu, yang memintanya begitu. Ia terletak di dalam arkib seperti sebuah bilik berkunci, di dalam rumah yang masih didiami mereka berdua.</p>
+      <p class="reveal">Tiada siapa yang bertanya soalan yang didekati sendiri oleh mesejnya pada 6 Ogos itu. <em>Isnt it weird?</em>  itulah yang paling hampir, dan ia dibiarkan, sengaja atau tidak, sebagai soalan yang tidak menuntut jawapan. Kata <em>sayang</em> dan <em>rindu</em> kini mengalir bebas  tetapi sentiasa berpakaian seragam <em>kawan</em>, <em>fren</em>, <em>bestie</em>; sebuah penyamaran yang tidak mengelirukan pembaca, dan agaknya, tidak juga mengelirukan mereka yang memakainya.</p>
+      <p class="reveal">Tiada cara untuk memastikan apa niat kedua-duanya. Yang boleh dikatakan, semata-mata daripada bukti: gadis itu pernah memberitahunya bahawa dia tidak lagi percaya lelaki tulus wujud  dan sejak itu telah menghabiskan lima ratus malam mengumpul bukti sebaliknya, daripada sumber yang sama. Dan lelaki itu pernah menulis bahawa apabila dia bersedia, dia berniat masuk ke dalam hidupnya <em>dengan cara yang halal dan terhormat</em>  dan telah membawa diri, selama 524 hari dan masih dikira, seperti seorang lelaki yang bersungguh dengan tulisannya.</p>
     </div>
   </div>
 </section>
 
-<hr class="divider">
+<aside class="divider-verse reveal" aria-label="Selingan">
+  <p>Kisah yang disuruh berhenti tidak semestinya mati;
+ada yang cuma bertukar nama, lalu meneruskan perjalanan.</p>
+</aside>
 
-<!-- ================= CONCLUSION ================= -->
+<!-- ================= PENUTUP ================= -->
 <section class="chapter" id="end">
   <div class="wrap">
     <header class="reveal">
-      <p class="kicker">Where the Story Stands</p>
-      <h2>7 August 2026, 7:01 PM</h2>
+      <p class="kicker">Di Sini Kisah Berdiri</p>
+      <h2>7 Ogos 2026, 7:01 Malam</h2>
     </header>
     <div class="prose">
-      <p class="reveal">The archive ends mid-sentence, because the conversation hasn't ended. The last day in the record contains 1,028 messages, one <em>Morningg jujuuuu</em>, one <em>dear</em>, and a man admitting he lost focus at a project exhibition because  his words  <em>tiba-tiba saya rasa perasaan rindu yang terlalu luar biasa terhadap juju</em>. She told him, on the record, to please miss her at a more convenient time. 😭</p>
-      <p class="reveal">What changed over these 524 days is easy to state and impossible to reduce: <em>Aiqha</em> became <em>saudari</em> became <em>juju</em>. A scoreboard became a letter, a letter became a year of careful distance, and the distance became five-hour phone calls at midnight. What remained is just as clear: the same two people, still teasing, still refusing labels, still ending their days in each other's company from towns an hour apart.</p>
-      <p class="reveal">What remains uncertain is the only thing that was ever uncertain. She asked for the story to end where it stood, and he honoured it so completely that the story had no choice but to start over as something else. Whether that something ever gets its true name  the one he wrote down once, in April, and never said again  is not in this archive.</p>
-      <p class="reveal">But the archive does contain her own best summary of the situation, filed at 6:59 on an ordinary Thursday morning, disguised as a joke the way all her serious things are:</p>
+      <p class="reveal">Arkib ini berakhir di tengah ayat, kerana perbualannya belum berakhir. Hari terakhir dalam rekod memuatkan 1,028 mesej, satu <em>Morningg jujuuuu</em>, satu <em>dear</em>, dan seorang lelaki yang mengaku hilang tumpuan di sebuah pameran projek kerana  kata-katanya sendiri  <em>tiba-tiba saya rasa perasaan rindu yang terlalu luar biasa terhadap juju</em>. Gadis itu, atas rekod, menyuruhnya rindu pada waktu yang lebih sesuai. 😭</p>
+      <p class="reveal">Apa yang berubah sepanjang 524 hari ini mudah disebut tetapi mustahil diringkaskan: <em>Aiqha</em> menjadi <em>saudari</em>, menjadi <em>juju</em>. Sebuah papan mata menjadi sebuah warkah; warkah menjadi setahun jarak yang dijaga rapi; dan jarak itu menjadi panggilan lima jam di tengah malam. Apa yang kekal sama jelasnya: dua manusia yang sama, masih berusik, masih menolak sebarang gelaran, masih menutup hari masing-masing dalam temani satu sama lain, dari dua bandar sejam jauhnya.</p>
+      <p class="reveal">Apa yang belum pasti ialah satu-satunya perkara yang memang tidak pernah pasti. Gadis itu meminta kisah ini berakhir di tempat ia berdiri  dan lelaki itu menunaikannya dengan begitu sempurna sehingga kisah itu tiada pilihan selain bermula semula sebagai sesuatu yang lain. Sama ada sesuatu itu akan menerima nama sebenarnya  nama yang pernah ditulis lelaki itu sekali, pada suatu April, dan tidak pernah disebutnya lagi  tidak ada di dalam arkib ini.</p>
+      <p class="reveal">Tetapi arkib ini ada menyimpan rumusan terbaik gadis itu sendiri tentang keadaan mereka, difailkan jam 6:59 pada suatu pagi Khamis yang biasa, menyamar sebagai gurauan  sebagaimana semua perkara seriusnya menyamar:</p>
     </div>
     <blockquote class="pull reveal">wdym rindu but never jumpa properly pun
-      <cite>Zulaikha  6 August 2026</cite>
+      <cite>Zulaikha  6 Ogos 2026</cite>
     </blockquote>
     <div class="prose">
-      <p class="reveal">Five meetings. Thirty thousand messages. Some stories end where they're told to. This one just changed its name and kept going.</p>
+      <p class="reveal">Lima pertemuan. Tiga puluh ribu bicara. Ada kisah yang berakhir di tempat ia disuruh berakhir. Yang ini cuma menukar namanya  lalu terus berjalan.</p>
     </div>
   </div>
 </section>
@@ -632,14 +681,14 @@ Saya tidak terlibat dengan program tersebut</span></div>
 </main>
 
 <footer>
-  <p>Assembled from a real conversation of 30,547 messages · 2 March 2025  7 August 2026.</p>
-  <p>All quotes appear in their original wording. Interpretations are marked as such; the rest belongs to the two people who wrote it.</p>
-  <a href="#hero" id="toTop">Return to the beginning</a>
+  <p>Disusun daripada perbualan sebenar sebanyak 30,547 mesej · 2 Mac 2025  7 Ogos 2026.</p>
+  <p>Semua petikan dikekalkan dalam tulisan asalnya. Tafsiran ditandakan sebagai tafsiran; selebihnya milik dua insan yang menulisnya.</p>
+  <a href="#hero" id="toTop">Kembali ke awal</a>
 </footer>
 
 <script>
 /* ============================================================
-   Reading progress bar
+   Bar kemajuan bacaan
    ============================================================ */
 (function(){
   var bar=document.getElementById("progress");
@@ -653,7 +702,7 @@ Saya tidak terlibat dengan program tersebut</span></div>
 })();
 
 /* ============================================================
-   Scroll-reveal (respects prefers-reduced-motion)
+   Animasi scroll-reveal (menghormati prefers-reduced-motion)
    ============================================================ */
 (function(){
   var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -671,7 +720,7 @@ Saya tidak terlibat dengan program tersebut</span></div>
 })();
 
 /* ============================================================
-   Chapter navigation dots  active state
+   Titik navigasi bab  keadaan aktif
    ============================================================ */
 (function(){
   var links=document.querySelectorAll("nav.chapters a");
@@ -693,15 +742,15 @@ Saya tidak terlibat dengan program tersebut</span></div>
 })();
 
 /* ============================================================
-   Message-volume chart (actual monthly counts)
+   Carta jumlah mesej (kiraan bulanan sebenar)
    ============================================================ */
 (function(){
   var data=[
-    ["Mar 25",4508],["Apr 25",1186],["May 25",124],["Jun 25",23],
-    ["Jul 25",110],["Aug 25",63],["Sep 25",40],["Oct 25",167],
-    ["Nov 25",112],["Dec 25",133],["Jan 26",31],["Feb 26",342],
-    ["Mar 26",36],["Apr 26",1106],["May 26",2322],["Jun 26",695],
-    ["Jul 26",8809],["Aug 26",10740]
+    ["Mac 25",4508],["Apr 25",1186],["Mei 25",124],["Jun 25",23],
+    ["Jul 25",110],["Ogo 25",63],["Sep 25",40],["Okt 25",167],
+    ["Nov 25",112],["Dis 25",133],["Jan 26",31],["Feb 26",342],
+    ["Mac 26",36],["Apr 26",1106],["Mei 26",2322],["Jun 26",695],
+    ["Jul 26",8809],["Ogo 26",10740]
   ];
   var max=10740;
   var host=document.getElementById("bars");
@@ -709,10 +758,10 @@ Saya tidak terlibat dengan program tersebut</span></div>
     var b=document.createElement("div");
     b.className="bar"+(d[1]>4000?" hot":"");
     b.style.height=Math.max(1.5,(d[1]/max)*100)+"%";
-    b.setAttribute("data-label",d[0]+" · "+d[1].toLocaleString()+" messages");
+    b.setAttribute("data-label",d[0]+" · "+d[1].toLocaleString()+" mesej");
     b.setAttribute("tabindex","0");
     b.setAttribute("role","img");
-    b.setAttribute("aria-label",d[0]+": "+d[1]+" messages");
+    b.setAttribute("aria-label",d[0]+": "+d[1]+" mesej");
     host.appendChild(b);
   });
 })();
