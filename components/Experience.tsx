@@ -33,7 +33,7 @@ export default function Experience() {
     setStarted(true);
     const play = audioRef.current?.play();
     play?.catch(() => {
-      /* autoplay blocked — still open story */
+      /* autoplay blocked; still open story */
     });
     window.setTimeout(() => setGateHidden(true), 950);
   }, [started]);

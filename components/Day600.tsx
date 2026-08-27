@@ -135,7 +135,7 @@ export default function Day600() {
         <a href="#m1" aria-label="Arkib yang enggan tutup" />
         <a href="#m2" aria-label="Lima pertemuan" />
         <a href="#m3" aria-label="Surat" />
-        <a href="#m4" aria-label="Malam sebelum 600" />
+        <a href="#m4" aria-label="Hari yang ke-600" />
       </nav>
 
       <header className="hero" id="hero600">
@@ -144,11 +144,11 @@ export default function Day600() {
         <p className="subtitle">
           {`Lima pertemuan masih lima.
 Dua puluh hari.
-Sembilan belas ribu bicara lagi.`}
+Dan pagi ini, batu yang ke-600.`}
         </p>
         <div className="meta">
           <span>
-            <strong>599</strong> hari, kiraan mereka
+            <strong>600</strong> hari, kiraan mereka
           </span>
           <span>
             <strong>19,427</strong> mesej baharu
@@ -174,27 +174,33 @@ Lapan jam kemudian,
 mereka masih dalam talian.`}
               </p>
               <p className="period" style={{ marginTop: "1.25rem" }}>
-                7 Ogos, 7:01 malam — 8 Ogos, 1:39 pagi
+                7 Ogos, 7:01 malam hingga 8 Ogos, 1:39 pagi
               </p>
             </header>
             <div className="prose">
               <p className="lede reveal">
                 Halaman yang tadi ditutup pada 7 Ogos 2026, jam 7:01 malam: satu{" "}
                 <em>Morningg jujuuuu</em>, satu <em>dear</em>, dan sebuah bye yang tidak
-                bermaksud tamat. Lapan jam kemudian — 1:39 pagi, 8 Ogos — log
+                bermaksud tamat. Lapan jam kemudian, 1:39 pagi, 8 Ogos, log
                 itu menulis semula: panggilan video, enam jam.
               </p>
               <p className="reveal">
                 Tiada siapa yang mengisytiharkan sambungan. Ia cuma berlaku.
                 Dua puluh hari. 19,427 mesej. Lima puluh dua panggilan. Ogos
-                2026, secara keseluruhan, memuatkan 30,496 mesej — lebih tiga
+                2026, secara keseluruhan, memuatkan 30,496 mesej, lebih tiga
                 kali ganda demam Julai yang sudah kelihatan seperti rekod.
               </p>
               <p className="reveal">
                 Halaman ini bukan permulaan baharu. Ia halaman yang sama,
-                dibuka semula. Nombor 600 di kaki kisah yang tadi — itu
+                dibuka semula. Nombor 600 di kaki kisah yang tadi, itu
                 bukan tajuk yang direka di sini. Pada 17 Ogos, jam 2:22 pagi,
                 lelaki itu sendiri yang menamakan jalan tersebut.
+              </p>
+              <p className="reveal">
+                Malam 27 Ogos, arkib terhenti. Pagi 28 Ogos, kiraan mereka
+                sampai ke batu yang ke-600. Halaman ini ditulis dari pagi
+                itu, memandang ke belakang, tanpa mendahului mesej yang belum
+                dieksport.
               </p>
             </div>
           </div>
@@ -260,16 +266,57 @@ Jam-jam itu dikumpul di tempat lain.`}
                 pada malam pertama bab ini, dan enam jam lagi pada malam
                 terakhir. Semuanya tanpa pertemuan yang keenam.
               </p>
+              <p className="reveal">
+                Yang tersimpan daripada lima itu bukan cerita penuh. Hanya
+                beberapa bingkai: dua wajah, beberapa kali, dan jarak yang
+                tidak pernah nampak dalam gambar.
+              </p>
             </div>
             <blockquote className="pull reveal">
               pernah jumpa 5 kali je tapi dia punya rindu tu macam jumpa hari
               hari
-              <cite>Zulaikha — 19 Ogos 2026, 9:18 malam</cite>
+              <cite>Zulaikha, 19 Ogos 2026, 9:18 malam</cite>
             </blockquote>
             <p className="chat-note reveal">
               Dia menambah, dalam nafas yang sama: <em>and fun fact : kita
               masih malu jumpa each other.</em> Lelaki itu menjawab{" "}
               <em>REAL FACT DAH TU</em>.
+            </p>
+            <div className="photos-film reveal" role="group" aria-label="Empat bingkai daripada lima pertemuan">
+              <figure className="photo">
+                <img
+                  src={ASSETS.jumpaMac}
+                  alt="Zulaikha dan Iqbal ketawa bersama di majlis berbuka, lantai dam, bunga di belakang."
+                />
+                <figcaption>7 Mac 2025</figcaption>
+              </figure>
+              <figure className="photo">
+                <img
+                  src={ASSETS.jumpaMacPlay}
+                  alt="Zulaikha dan Iqbal menunjuk jari antara satu sama lain, masih di majlis yang sama."
+                />
+                <figcaption>Malam yang sama</figcaption>
+              </figure>
+              <figure className="photo">
+                <img
+                  src={ASSETS.jumpaFeb}
+                  alt="Zulaikha senyum ke kamera; Iqbal memandangnya, Whitehall di belakang."
+                />
+                <figcaption>25 Feb 2026</figcaption>
+              </figure>
+              <figure className="photo">
+                <img
+                  src={ASSETS.jumpaJul}
+                  alt="Selfie luar: Zulaikha di depan, Iqbal di belakang, kedua-duanya senyum."
+                />
+                <figcaption>24 Jul 2026</figcaption>
+              </figure>
+            </div>
+            <p className="film-note reveal">
+              Lima pertemuan. Arkib menyimpan sebahagian wajahnya. Pada 7 Mac
+              dia menulis <em>Sangat tidak photogenic</em>. Pada 24 Julai dia
+              menulis <em>kalo takda gambar pun tadi, tak ke nyesal kamu</em>.
+              Yang keenam belum ada.
             </p>
             <div className="chat reveal" role="figure" aria-label="Petikan 17 Ogos 2026">
               <p className="stamp">17 Ogos 2026 · 2:22 pagi</p>
@@ -292,9 +339,10 @@ Jam-jam itu dikumpul di tempat lain.`}
             </div>
             <p className="chat-note reveal">
               Kiraan itu milik mereka. Dalam kalendar tersebut, 27 Ogos ialah
-              hari ke-599. Hari ke-600 belum tiba. Jalan itu sudah bernama.
+              hari ke-599. 28 Ogos, pagi ini, ialah batu yang ke-600. Jalan
+              itu sudah bernama, dan sudah sampai.
             </p>
-            <figure className="photo reveal">
+            <figure className="photo wide reveal">
               <img
                 src={ASSETS.masjidMalam}
                 alt="Masjid putih pada malam hari, kubah dan menara tersinar."
@@ -310,14 +358,32 @@ Jam-jam itu dikumpul di tempat lain.`}
                   src={ASSETS.masjidInterior}
                   alt="Bahagian dalam dewan: chandelier emas, siling berukir."
                 />
+                <figcaption>Lampu yang sama, dari dalam.</figcaption>
               </figure>
               <figure className="photo">
                 <img
                   src={ASSETS.menara}
                   alt="Menara masjid dari sudut rendah, langit hitam."
                 />
+                <figcaption>Menara, malam itu juga.</figcaption>
               </figure>
             </div>
+            <div className="prose">
+              <p className="reveal">
+                Empat hari kemudian, muka itu kembali, bukan di dewan, bukan
+                di lantai dam. Di dua kereta, satu skrin.
+              </p>
+            </div>
+            <figure className="photo reveal">
+              <img
+                src={ASSETS.videocall}
+                alt="Panggilan video: Zulaikha senyum dalam kereta, Iqbal nampak di sudut skrin."
+              />
+              <figcaption>
+                12 Ogos, 4:53 petang. Dua kereta, satu panggilan. Muka yang
+                sama, jarak yang sama.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -346,20 +412,23 @@ dan dijawab pada pagi berikutnya.`}
               <p className="reveal">
                 Pada 11 Ogos, jam 1:19 pagi, selepas panggilan tiga belas jam
                 itu, lelaki itu menghantar pautan. Katanya: <em>I did this
-                while you sleep hihi hope you love it juju</em>. Pagi itu,
-                jam 7:32, gadis itu membalas — bukan warkah April yang masih
-                berkunci, tetapi yang ini:
+                while you sleep hihi hope you love it juju</em>. Sesuatu yang
+                disusun dalam senyap, semasa nafas di seberang sudah rata.
+                Pagi itu, jam 7:32, gadis itu membalas, bukan warkah April
+                yang masih berkunci, tetapi yang ini:
               </p>
             </div>
             <blockquote className="pull reveal">
               tak ada kata yang boleh terjemah how grateful i am to have
               someone like you. … may we stay this way if thats the best for
               us. … kawan tersayang!
-              <cite>Zulaikha — 11 Ogos 2026, 7:32 pagi</cite>
+              <cite>Zulaikha, 11 Ogos 2026, 7:32 pagi</cite>
             </blockquote>
             <div className="prose">
               <p className="reveal">
                 Gelaran itu tidak digugurkan. Ia cuma disuruh memikul lagi.
+                <em>Kawan</em> yang sudah lama, dan <em>tersayang</em> yang
+                tidak lagi berani bersembunyi di belakangnya.
               </p>
               <p className="reveal">
                 Dua malam kemudian, 14 hingga 15 Ogos, datang sebuah hari yang
@@ -371,15 +440,17 @@ dan dijawab pada pagi berikutnya.`}
                 seseorang yang tidak pergi.
               </p>
               <p className="reveal">
-                Kemudian, jam 1:00 pagi pada 16 Ogos, nada itu bertukar —
-                formal, hampir jenaka, dan tetap sebuah pengakuan:
+                Kemudian, jam 1:00 pagi pada 16 Ogos, nada itu bertukar.
+                Formal, hampir jenaka, dan tetap sebuah pengakuan. Nama
+                penuhnya, nama penuhnya. Ditulis seperti surat rasmi, kerana
+                yang tidak rasmi sudah terlalu lama disimpan:
               </p>
             </div>
             <blockquote className="pull reveal">
               SAYA Muhammad Saiful Iqbal Abdul Rani / Dengan ini menyatakan
               secara rasmi bahawa Saya … amat amat merindui seseorang insan
               istimewa … dan insan tersebut bernama Zulaikha Omar
-              <cite>Iqbal — 16 Ogos 2026, 1:00 pagi</cite>
+              <cite>Iqbal, 16 Ogos 2026, 1:00 pagi</cite>
             </blockquote>
           </div>
         </section>
@@ -395,14 +466,14 @@ ia tidak menunggu malam yang sesuai.`}
           <div className="wrap">
             <header className="reveal">
               <p className="kicker">IV</p>
-              <h2>Malam sebelum 600</h2>
+              <h2>Hari yang ke-600</h2>
               <p className="stanza">
                 {`Jalan itu sudah bernama.
-Harinya belum tiba.
-Perbualannya belum tutup.`}
+Arkib terhenti malam tadi.
+Pagi ini, batunya tiba.`}
               </p>
               <p className="period" style={{ marginTop: "1.25rem" }}>
-                27 Ogos 2026 · hari ke-599
+                28 Ogos 2026 · hari ke-600
               </p>
             </header>
             <div className="chart reveal" role="figure" aria-label="Carta mesej harian 8 hingga 27 Ogos 2026">
@@ -416,7 +487,7 @@ Perbualannya belum tutup.`}
               <p className="chart-caption">
                 Visualisasi tafsiran daripada kiraan harian yang sebenar.
                 Palang paling tinggi: 20 Ogos, 2,263 mesej. Yang paling
-                rendah: 24 Ogos, 193 — sehari yang lebih banyak diisi
+                rendah: 24 Ogos, 193, sehari yang lebih banyak diisi
                 panggilan daripada tulisan.
               </p>
             </div>
@@ -426,6 +497,29 @@ Perbualannya belum tutup.`}
                 kali, <em>rindu</em> 221 kali. Gelaran <em>kawan</em> tidak
                 hilang. Ia hanya semakin kerap didampingi yang lain.
               </p>
+              <p className="reveal">
+                Dua puluh Ogos, palang yang paling tinggi, bukan hari
+                perisytiharan. Ia hari yang tidak mahu berhenti bercakap.
+                Dua ribu dua ratus enam puluh tiga mesej, kemudian malam
+                itu juga, seperti malam-malam lain, masih ada panggilan.
+              </p>
+              <p className="reveal">
+                Tiga belas hari sebelum batu ini, tengah malam, lelaki itu
+                memotret skrin. Gadis itu di tablet, dagu di tapak tangan.
+                Dia menulis, tidak berbisik:
+              </p>
+            </div>
+            <figure className="photo reveal">
+              <img
+                src={ASSETS.malamTablet}
+                alt="Iqbal di sisi bingkai, tablet di meja menayangkan Zulaikha sedang senyum dalam panggilan."
+              />
+              <figcaption>
+                13 Ogos, 12:22 pagi. <em>COMELNYAA MASYAALLAH KAMU NI.</em>{" "}
+                Dia menjawab: <em>masyeh u comel too</em>.
+              </figcaption>
+            </figure>
+            <div className="prose">
               <p className="reveal">
                 Malam 27 Ogos bermula dengan panggilan video enam jam, berakhir
                 dekat subuh. Petang itu ada urusan teknikal, ada{" "}
@@ -454,26 +548,28 @@ Perbualannya belum tutup.`}
             </div>
             <p className="chat-note reveal">
               Arkib terhenti tiga minit kemudian, pada sebuah pelekat. Bukan
-              kerana kisahnya selesai. Kerana export ini diambil malam itu.
+              kerana kisahnya selesai. Kerana export ini diambil malam itu,
+              pada hari ke-599.
             </p>
             <div className="prose">
               <p className="reveal">
                 Lima pertemuan. Masih lima. 50,303 mesej dari malam pertama
-                hingga malam ini. Mereka menamakan jalan itu Road to 600
-                sebelas hari yang lalu, dan berdiri sekarang pada hari
-                ke-599. Halaman ini tidak akan mendahului pagi esok.
+                hingga malam tadi. Mereka menamakan jalan itu Road to 600
+                sebelas hari yang lalu, dan pagi ini berdiri pada batu yang
+                ke-600. Halaman ini tidak akan mencipta apa yang belum
+                ditulis dalam arkib. Ia cuma mencatat yang sudah sampai.
               </p>
               <p className="reveal">
                 Yang boleh dikatakan, semata-mata daripada bukti: gadis yang
                 pernah menulis <em>cerita sini biarlah habis sini</em> kini
                 menulis <em>i love you</em> di antara urusan biasa. Lelaki yang
                 pernah berjanji tidak akan mengungkit April masih menepati
-                janji itu — dan tetap datang setiap pagi dengan namanya.
+                janji itu, dan tetap datang setiap pagi dengan namanya.
               </p>
               <p className="reveal">
                 Ada kisah yang disuruh berakhir di situ. Yang ini menukar
-                lagunya, menamakan jalannya, dan belum sampai ke batu yang
-                ke-600.
+                lagunya, menamakan jalannya, dan pagi ini, tanpa mesej baharu
+                dalam export, sudah sampai ke batu yang ke-600.
               </p>
             </div>
           </div>
@@ -482,8 +578,8 @@ Perbualannya belum tutup.`}
 
       <footer>
         <p>
-          Disusun daripada 19,427 mesej · 8–27 Ogos 2026 · hari ke-599 dalam
-          kiraan mereka.
+          Disusun daripada 19,427 mesej · 8–27 Ogos 2026 · ditulis pada hari
+          ke-600 dalam kiraan mereka.
         </p>
         <p>
           Semua petikan dikekalkan dalam tulisan asalnya. Tafsiran ditandakan

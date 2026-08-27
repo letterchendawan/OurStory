@@ -114,7 +114,7 @@ export default function Story({ onContinueTo600 }: StoryProps) {
     <>
       <div
         ref={rootRef}
-        // Static editorial markup, authored in-repo — not user input.
+        // Static editorial markup, authored in-repo, not user input.
         dangerouslySetInnerHTML={{ __html: storyMarkup }}
       />
       <div className="continue-600">
