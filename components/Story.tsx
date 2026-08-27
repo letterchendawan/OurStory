@@ -24,7 +24,11 @@ const MONTHLY_COUNTS: [string, number][] = [
   ["Ogo 26", 10740],
 ];
 
-export default function Story() {
+type StoryProps = {
+  onContinueTo600: () => void;
+};
+
+export default function Story({ onContinueTo600 }: StoryProps) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -107,10 +111,17 @@ export default function Story() {
   }, []);
 
   return (
-    <div
-      ref={rootRef}
-      // Static editorial markup, authored in-repo — not user input.
-      dangerouslySetInnerHTML={{ __html: storyMarkup }}
-    />
+    <>
+      <div
+        ref={rootRef}
+        // Static editorial markup, authored in-repo — not user input.
+        dangerouslySetInnerHTML={{ __html: storyMarkup }}
+      />
+      <div className="continue-600">
+        <button type="button" id="to600" onClick={onContinueTo600}>
+          600
+        </button>
+      </div>
+    </>
   );
 }

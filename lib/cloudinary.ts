@@ -15,5 +15,7 @@ export function cldUrl(
 
 /** Fill in public IDs after assets are uploaded to Cloudinary. */
 export const ASSETS = {
-  // bgm: cldUrl("zulaikha/satie-gymnopedie-no-1", "video"),
+  masjidMalam: cldUrl("zulaikha/600/masjid-malam", "image", "f_auto,q_auto,w_1400"),
+  masjidInterior: cldUrl("zulaikha/600/masjid-interior", "image", "f_auto,q_auto,w_1400"),
+  menara: cldUrl("zulaikha/600/menara", "image", "f_auto,q_auto,w_900"),
 } as const;

@@ -1,12 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import Gate from "@/components/Gate";
 import MuteButton from "@/components/MuteButton";
 import Story from "@/components/Story";
+import { playMenemukanmu, pauseMenemukanmu } from "@/lib/bgm";
 import { withBasePath } from "@/lib/paths";
 
 export default function Experience() {
+  const router = useRouter();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [started, setStarted] = useState(false);
   const [gateHidden, setGateHidden] = useState(false);
@@ -14,6 +17,10 @@ export default function Experience() {
 
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = 0.45;
+  }, []);
+
+  useEffect(() => {
+    pauseMenemukanmu();
   }, []);
 
   useEffect(() => {
@@ -38,6 +45,16 @@ export default function Experience() {
     setMuted(audio.muted);
   }, []);
 
+  const goTo600 = useCallback(() => {
+    const satie = audioRef.current;
+    if (satie) {
+      satie.pause();
+      satie.currentTime = 0;
+    }
+    void playMenemukanmu();
+    router.push("/600");
+  }, [router]);
+
   return (
     <>
       <audio
@@ -47,7 +64,7 @@ export default function Experience() {
         preload="auto"
       />
       <Gate started={started} hidden={gateHidden} onEnter={start} />
-      {started ? <Story /> : null}
+      {started ? <Story onContinueTo600={goTo600} /> : null}
       {started ? <MuteButton muted={muted} onToggle={toggleMute} /> : null}
     </>
   );
