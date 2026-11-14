@@ -681,7 +681,8 @@ footer p {
   text-align: center;
   padding: 0 1.5rem 5rem;
 }
-#to600 {
+#to600,
+.to-next {
   appearance: none;
   display: inline-block;
   font-family: var(--serif);
@@ -698,11 +699,14 @@ footer p {
   transition: background 0.3s, color 0.3s;
 }
 #to600:hover,
-#to600:focus-visible {
+.to-next:hover,
+#to600:focus-visible,
+.to-next:focus-visible {
   background: var(--accent);
   color: var(--paper);
 }
-#to600:focus-visible {
+#to600:focus-visible,
+.to-next:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
 }

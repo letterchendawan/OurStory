@@ -25,3 +25,11 @@ export const ASSETS = {
   videocall: cldUrl("zulaikha/600/videocall", "image", "f_auto,q_auto,w_900"),
   malamTablet: cldUrl("zulaikha/600/malam-tablet", "image", "f_auto,q_auto,w_1100"),
 } as const;
+
+export const ASSETS_679 = {
+  keretaOkt: cldUrl("zulaikha/679/kereta-okt", "image", "f_auto,q_auto,w_1200"),
+  bungaPertama: cldUrl("zulaikha/679/bunga-pertama", "image", "f_auto,q_auto,w_900"),
+  cermin: cldUrl("zulaikha/679/cermin", "image", "f_auto,q_auto,w_900"),
+  jambangan: cldUrl("zulaikha/679/jambangan", "image", "f_auto,q_auto,w_900"),
+  makanNov: cldUrl("zulaikha/679/makan-nov", "image", "f_auto,q_auto,w_1200"),
+} as const;

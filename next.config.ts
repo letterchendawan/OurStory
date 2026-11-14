@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
-const basePath = "/Zulaikha-Iqbal";
+// GitHub Actions passes the Pages base path (e.g. "/repo-name", or "" for a
+// username.github.io repo), so the site follows whichever repo deploys it.
+// Locally it defaults to the root: http://localhost:3000/
+const basePath = (process.env.PAGES_BASE_PATH ?? "").replace(/\/+$/, "");
 
 const nextConfig: NextConfig = {
   output: "export",

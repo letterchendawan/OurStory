@@ -31,6 +31,10 @@ export function pauseMenemukanmu(): void {
   audio?.pause();
 }
 
+export function isMenemukanmuPlaying(): boolean {
+  return audio !== null && !audio.paused;
+}
+
 export function isMenemukanmuMuted(): boolean {
   return getAudio()?.muted ?? false;
 }

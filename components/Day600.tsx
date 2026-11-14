@@ -576,6 +576,12 @@ Pagi ini, batunya tiba.`}
         </section>
       </main>
 
+      <div className="continue-600">
+        <Link href="/" className="to-next">
+          679
+        </Link>
+      </div>
+
       <footer>
         <p>
           Disusun daripada 19,427 mesej · 8–27 Ogos 2026 · ditulis pada hari
@@ -592,7 +598,7 @@ Pagi ini, batunya tiba.`}
           </a>
         </p>
         <p>
-          <Link href="/">Kembali ke kisah awal</Link>
+          <Link href="/kisah">Kembali ke kisah awal</Link>
         </p>
       </footer>
 
